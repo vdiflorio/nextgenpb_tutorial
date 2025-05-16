@@ -2,7 +2,6 @@
 
 ### 📄 `README.md`
 
-```markdown
 # NextGenPB Tutorial
 
 This is a basic tutorial for the **NextGenPB** solver, designed for students and researchers interested in electrostatics and the Poisson–Boltzmann equation.
