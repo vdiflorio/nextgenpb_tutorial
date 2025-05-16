@@ -21,6 +21,6 @@ This is a basic tutorial for the **NextGenPB** solver, designed for students and
 Clone this repo and follow the instructions in `index.md`.
 
 ````bash
-git clone https://github.com/your-username/nextgenpb_tutorial
+git clone https://github.com/vdiflorio/nextgenpb_tutorial
 cd nextgenpb_tutorial
 ````
