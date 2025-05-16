@@ -1,26 +1,18 @@
-# 🔬 Tutorial Base – Calcolo del potenziale elettrostatico con NextGenPB
+# 🔬 NextGenPB – Electrostatics Tutorial
 
-## 🎯 Obiettivo
-Calcolare il potenziale elettrostatico di una proteina a partire da un file `.pqr` utilizzando NextGenPB.
+Welcome to the **NextGenPB** tutorial! This guide walks you through calculating electrostatic potentials from a biomolecular structure using the Poisson–Boltzmann equation.
 
----
+- 🔧 [Run the Solver](run.md)
+- 📊 [Visualize Results](visualize.md)
+- 📁 [Input/Output Files](files.md)
 
-## 📦 Requisiti
-
-### Software
-- Docker **oppure** Singularity
-- ParaView (opzionale per visualizzare i risultati)
-
-### File richiesti
-- `1ABC.pqr` – File PQR della proteina
-- `options.pot` – File di configurazione del calcolo
+Created for students and bioinformaticians.
 
 ---
 
-## 🚀 Step 1 – Preparazione
-
-Crea una cartella per il progetto:
+## 🚀 Quick Start
 
 ```bash
-mkdir nextgenpb_tutorial
+git clone https://github.com/vdiflorio/nextgenpb_tutorial
 cd nextgenpb_tutorial
+```
