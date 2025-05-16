@@ -1,5 +1,3 @@
----
-
 ### 📄 `visualize.md`
 
 # 📊 Visualizing Results with ParaView
