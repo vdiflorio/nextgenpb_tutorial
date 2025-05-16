@@ -10,9 +10,5 @@ Created for students and bioinformaticians.
 
 ---
 
-## 🚀 Quick Start
+## 🚀 Quick Introduction
 
-```bash
-git clone https://github.com/vdiflorio/nextgenpb_tutorial
-cd nextgenpb_tutorial
-```
