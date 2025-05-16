@@ -1,7 +1,3 @@
----
-title: NextGenPB Tutorial
----
-
 # NextGenPB Tutorial
 
 This is a basic tutorial for the **NextGenPB** solver, designed for students and researchers interested in electrostatics and the Poisson–Boltzmann equation.
@@ -16,11 +12,9 @@ This is a basic tutorial for the **NextGenPB** solver, designed for students and
 
 ---
 
-## Usage
+## Website
 
-Clone this repo and follow the instructions in `index.md`.
-
+The website of the tutorial is:
 ````bash
-git clone https://github.com/vdiflorio/nextgenpb_tutorial
-cd nextgenpb_tutorial
+https://vdiflorio.github.io/nextgenpb_tutorial/
 ````
