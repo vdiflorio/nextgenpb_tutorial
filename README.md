@@ -14,7 +14,4 @@ This is a basic tutorial for the **NextGenPB** solver, designed for students and
 
 ## Website
 
-The website of the tutorial is:
-````bash
-https://vdiflorio.github.io/nextgenpb_tutorial/
-````
+The website of the tutorial is [here](https://github.com/GunnerLab/MCCE4-Alpha)
