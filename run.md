@@ -2,7 +2,6 @@
 
 ### 📄 `run.md`
 
-```markdown
 # ⚙️ Running NextGenPB
 
 You can run NextGenPB using either **Docker** or **Singularity**.
