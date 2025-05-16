@@ -2,7 +2,6 @@
 
 ### 📄 `visualize.md`
 
-```markdown
 # 📊 Visualizing Results with ParaView
 
 Once the `.vtk` file is generated, you can view it using **ParaView**.
