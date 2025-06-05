@@ -2,12 +2,15 @@
 
 ---
 
-## ✅ Input Files
+## ✅ Protein Files 
 
-### `1ABC.pqr`
+### PQR files
 A molecular structure file with atom coordinates, radii, and partial charges.
 
-### `options.pot`
+### PDB files
+
+## ✅ Configuration Files
+### `options.prm`
 Contains simulation parameters. Example content:
 
 ```text
