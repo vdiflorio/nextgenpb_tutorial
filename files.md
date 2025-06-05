@@ -1,4 +1,4 @@
-# 📁 Input and Output Files
+# 📁 Input Files
 
 ---
 
