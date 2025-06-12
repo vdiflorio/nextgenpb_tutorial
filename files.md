@@ -1,6 +1,5 @@
 # 📁 Input Files
 
----
 
 ## ✅ Protein Files 
 

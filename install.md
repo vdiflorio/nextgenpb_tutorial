@@ -1,7 +1,6 @@
 
 # 🛠️ Installation Guide for NextGenPB
 
-----
 
 This section provides a comprehensive guide to installing **NextGenPB**, including all required libraries and setup instructions for **macOS**, **Linux**, and **containerized environments**.
 

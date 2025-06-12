@@ -9,8 +9,9 @@ Created for students and bioinformaticians.
 
 - 🛠️ [Install the Solver](install.md)
 - ⚙️ [Run the Solver](run.md)
-- 📊 [Visualize Results](visualize.md)
-- 📁 [Input/Output Files](files.md)
+- 📁 [Input Files](files.md)
+- 📊 [Outputs & Visualize Results](visualize.md)
+
 
 
 ---
