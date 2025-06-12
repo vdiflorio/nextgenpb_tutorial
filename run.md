@@ -34,7 +34,7 @@ If your simulation also involves a specific molecular structure, you can provide
 mpirun -np <number_of_processors> ngpb --prmfile options.prm --pqrfile molecule.pqr
 ```
 
-📘 **Note**: Details about the structure and purpose of `.prm`, `.pqr`, and `.pdb` files are provided in the [Input Files guide](file.md).
+📘 **Note**: Details about the structure and purpose of `.prm`, `.pqr`, and `.pdb` files are provided in the [Input Files guide](files.md).
 
 ---
 ## 🧪 Running Locally (Compiled Version)
@@ -129,5 +129,5 @@ mpirun -np 4 ngpb --prmfile options.prm > run.log 2>&1
 ---
 ⬅️ Return to the [Installation Guide](install.md) if you haven’t installed the solver yet.
 
-➡️ Go to [input files](file.md) to learn everything about `.prm`, `.pot`, `.pqr`, and other input formats.
+➡️ Go to [input files](files.md) to learn everything about `.prm`, `.pot`, `.pqr`, and other input formats.
 
