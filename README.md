@@ -4,11 +4,10 @@ This is a basic tutorial for the **NextGenPB** solver, designed for students and
 
 📂 Contents:
 - `index.md`: Tutorial home page
+- `install.md`: Instructions to install NextGenPB
 - `run.md`: Instructions to run NextGenPB
-- `visualize.md`: How to visualize results in ParaView
-- `files.md`: Explanation of input/output files
-- `options.pot`: Solver parameters
-- `1ABC.pqr`: Example molecule
+- `files.md`: Explanation of input files
+- `visualize.md`: How to understand and visualize results
 
 ---
 
