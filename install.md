@@ -236,5 +236,6 @@ Then follow the same steps described in the **macOS build** section.
 ---
 
 ✅ You’re now ready to run simulations with **NextGenPB**!
+
 ➡️ Go to [running section](run.md) to learn out to run the solver.
 
