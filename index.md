@@ -8,7 +8,7 @@ Created for students and bioinformaticians.
 ## 📚 Table of Contents
 
 - 🛠️ [Install the Solver](install.md)
-<!-- - ⚙️ [Run the Solver](run.md) -->
+- ⚙️ [Run the Solver](run.md)
 - 📁 [Input Files](files.md)
 - 📊 [Outputs & Visualize Results](visualize.md)
 
