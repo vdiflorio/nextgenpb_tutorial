@@ -1,3 +1,9 @@
+---
+layout: default
+title: Run
+nav_order: 2
+---
+
 # ⚙️ Running NextGenPB
 
 You can run NextGenPB using either **Docker** or **Singularity**.
