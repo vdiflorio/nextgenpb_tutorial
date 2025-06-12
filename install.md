@@ -39,6 +39,8 @@ wget ....
 ```bash
  apptainer exec --pwd /App --bind /path/to/files/:/App  /path/to/sif/NextGenPB_ompi4.sif mpirun -np <number_of_processors> ngpb --prmfile options.prm
 ```
+➡️ See the [Running NextGenPB](run.md) guide for execution details using the container.
+
 ### 🚶‍♂️ Less Impatient: Build Docker or Apprainer Image
 If you have root permissions, you can build the Docker or Apprainer image. This approach allows customization of library versions and compiler flags (e.g., CFLAGS="-O3 -mtune=native -march=native").
 
@@ -59,6 +61,7 @@ To run the Apptainer image:
 ```bash
  apptainer exec --pwd /App --bind /path/to/files/:/App  /path/to/sif/NextGenPB_ompi4.sif mpirun -np <number_of_processors> ngpb --prmfile options.prm
 ```
+➡️ See the [Running NextGenPB](run.md) guide for execution details using the container.
 
 ## 🍏 Installation on macOS (via MacPorts)
 
@@ -145,6 +148,8 @@ From the src directory:
 make clean all
 ```
 This process generates an executable named `ngpb` in the `src` directory.
+➡️ Once compiled, see [Running NextGenPB](run.md) for examples on how to run ngpb on your system or within a container.
+
 
 ### ✅ Step 4: Add to PATH (Optional)
 To run ngpb from anywhere, add it to your terminal path. For example, in .zshrc:
