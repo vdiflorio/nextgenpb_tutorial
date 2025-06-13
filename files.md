@@ -175,45 +175,52 @@ surf_write    = 0       # Export surface potential
 Here one finds the definition of how the boundary between solute and solvent is generated using NanoShaper, a tool aimed at computing the molecular surface and pockets of a biomolecular system.
 
 #### Surface Types:
+Dielectric boundaries are defined by means of surface types that can be specifically selected. 
 
-```ini
-surface_type = 0         # 0 = SES, 1 = Skin, 2 = Blobby
-surface_parameter = 1.4  # Probe radius or smoothness parameter
-```
+| Option | Description                     |
+| ------ | ------------------------------- |
+|  `0`   |  Solvent Excluded Surface (SES) |
+|  `1`   |  Skin Surface                   |
+|  `2`   |  Blobby Surface                 |
 
-#### Stern Layer:
+Moreover the surface shape can be controlled through a specific numerical parameter:
+* In the case of Solvent Exluded Surfaces such parameter is the probe radius, approximately 1,4 Å for water
+* For skin or blobby surfaces instead it controls smoothness/blobbyness (-1.5)
 
-```ini
-stern_layer_surf = 0        # Include Stern layer?
-stern_layer_thickness = 2.0 # In Å
-```
-
-#### Performance:
-
-```ini
-number_of_threads = 1  # Set based on your CPU
-```
+#### Stern Layer
+It is possible to choose to include a Stern layer (an electric double layer) by setting `stern_layer_surf = 1` or equal to `0` otherwise. 
+It is also possible to choose its thickness (in Å) by imposing, for example, `stern_layer_thickness = 2.0`. 
 
 ### 5. Solver and Algorithm 
 
 In this last section, one may want to personalize the solver and various options like the solver type, the preconditioner and the tolerance.
 
-#### Example:
-
-```ini
-linear_solver = lis
-solver_options = -p\ ssor\ -ssor_omega\ 0.51\ -i\ cgs\ -tol\ 1.e-6\ -print\ 2\ -conv_cond\ 2\ -tol_w\ 0
-```
+* First consider the linear solver backend: two main options can be selected, a direct solver which is stable but much more memory demanding (linear_solver = 'mumps'), and an iterative solver which is far more recommended for large problems (linear_solver = 'lis').
 
 #### Common LIS Solver Flags:
+These control the solver type, preconditioner, tolerances, and print level
 
-| Option   | Description                            |
-| -------- | -------------------------------------- |
-| `-i`     | Solver type (e.g., `cg`, `cgs`)        |
-| `-p`     | Preconditioner (`ilu`, `ssor`, etc.)   |
-| `-tol`   | Convergence tolerance                  |
-| `-print` | Output level (0 = silent, 2 = verbose) |
+| Option       | Description                  |
+| ------------ | ---------------------------- |
+| `-i`         | Sets the solver type         |
+| `-p`         | Chooses the preconditioner   |
+| `-tol`       | Sets a convergence tolerance |
+| `-print`     | Output level                 |
+| `-conv_cond` | Convergence condition type   |
+| `-tol_w`     | Warning tolerance
 
+* The options for the solver type can be cg, cgs, bicgstab, etc.
+* The preconditioner can be set to ilu, ssor, jacobi, etc.
+* The tolerance criteria can be fixed freely
+* The verbosity, through `-print`, can be selected to be 0 if silent, 1 for final and 2 for verbose
+* Convergence condition type allows to select which type of norm convergence to select
+
+
+#### Example
+One may use the SSOR preconditioning with CGS solver and selecting a strict tolerance with the command:
+```bash
+solver_options = -p\ ssor\ -ssor_omega\ 0.51\ -i\ cgs\ -tol\ 1.e-6\ -print\ 2\ -conv_cond\ 2\ -tol_w\ 0
+```
 
 ### 6. New Developments
 
