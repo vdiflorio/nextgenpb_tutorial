@@ -1,4 +1,10 @@
-# 📁 Input Files
+---
+layout: default
+title: Input Files
+nav_order: 4
+---
+
+# 📁 Input Files Guide
 
 
 ## ✅ Protein Files 

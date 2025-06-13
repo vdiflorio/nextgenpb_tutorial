@@ -1,28 +1,14 @@
 title: "NextGenPB Tutorial"
 description: "A beginner-friendly guide to running and visualizing Poisson–Boltzmann simulations with NextGenPB."
+remote_theme: just-the-docs/just-the-docs
 
-theme: jekyll-theme-primer
+color_scheme: light
+search_enabled: true
 
-# Abilita la conversione dei file Markdown locali (es. run.md → run.html)
+# Ordine di navigazione (facoltativo, per ordinare i file nel menu)
+nav_sort: case_insensitive
+
+# Per link relativi
 markdown: kramdown
 kramdown:
   input: GFM
-
-# Plugin richiesti da GitHub Pages
-plugins:
-  - jekyll-relative-links
-  - jekyll-seo-tag
-
-# Per far funzionare i link relativi tra pagine Markdown
-relative_links:
-  enabled: true
-  collections: true
-
-# Exclude temporary or dev files from the site
-exclude:
-  - Dockerfile
-  - recipe.def
-  - file.pqr
-  - options.pot
-  - README.md
-  - LICENSE
