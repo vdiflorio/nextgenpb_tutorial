@@ -30,5 +30,5 @@ output_format = vtk
 3. Electrostatics Model Settings
 4. Surface Definition (NanoShaper)
 5. Solver and Algorithm Settings
-6. 
+6. New developments 
 
