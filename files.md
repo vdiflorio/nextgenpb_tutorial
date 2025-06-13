@@ -26,16 +26,6 @@ This tutorial explains the structure and purpose of each section contained in th
 * If using `.pdb`, you must provide radius and charge files separately.
 
 
-```text 
-grid_spacing = 0.5
-boundary_condition = focusing
-ionic_strength = 0.15
-temperature = 298
-output_format = vtk
-```  
-# a questo punto possiamo togliere questa sezione di esempi qui sopra?
-
-
 ### Introduction
 
 The `.pot` file contains the full set of instructions needed by the solver to:
@@ -48,9 +38,17 @@ The `.pot` file contains the full set of instructions needed by the solver to:
 
 ### 1. Input Settings 
 
-Specify molecular input data such as the file format and associated information.
+The first section of the options file concerns focuses on the specification of the types of molecular input data such as the file format and other associated information such as the paths.
 
 #### Key Parameters:
+
+| Option   | Description                            |
+| -------- | -------------------------------------- |
+|       |        |
+|       |        |
+|       |        |
+|       |        |
+
 
 ```ini
 filetype = pqr                     # Choose between 'pqr' (recommended) and 'pdb'.
@@ -64,16 +62,29 @@ name_pqr = output.pqr              # Output file name if write_pqr is set to 1.
 
 ### 2. Mesh Settings
 
-Define the computational mesh that discretizes the 3D space around the molecule.
+As usual in physical simulations, when the dynamics is described by differential equations, it becomes fundamental to properly define the computational mesh that discretizes the 3D space around the system. In this case the discretization is developed around the biomolecule under investigation, but its construction can be supervised with a series of control variables.
 
 #### Mesh Shape Options 
-The value assigned to the variable 'mesh_shape' controls the way the grid is generated:
+The first step is devoted to the choice of the shape of the mesh as described in the table below:
+
+| Option   | Description                            |
+| -------- | -------------------------------------- |
+|       |        |
+|       |        |
+|       |        |
+|       |        |
+
+
+
 ```ini
 0 = Derefined mesh based on perfil1/perfil2
 1 = Uniform cubic mesh
 2 = Manual bounding box
 3 = Focused mesh (local refinement)
 ```
+
+The value assigned to the variable 'mesh_shape' controls the way the grid is generated:
+
 
 For the grid spacing control it is useful to handle the following parameters:
 
@@ -129,7 +140,7 @@ refine_z2 = 4.0
 
 ### 3. Electrostatics Model 
 
-Define the electrostatic equation model, dielectric environment, and energy calculations.
+This section is devoted to the physical model, e.g. the linearized Poisson-Boltzmann equation, through the definition of the boundary conditions, the dielectric environment, as well as the choice of various energy calculations.
 
 #### Main Settings:
 
@@ -161,7 +172,7 @@ surf_write    = 0       # Export surface potential
 
 ### 4. Surface Definition 
 
-Define how the boundary between solute and solvent is generated using NanoShaper.
+Here one finds the definition of how the boundary between solute and solvent is generated using NanoShaper, a tool aimed at computing the molecular surface and pockets of a biomolecular system.
 
 #### Surface Types:
 
@@ -185,7 +196,7 @@ number_of_threads = 1  # Set based on your CPU
 
 ### 5. Solver and Algorithm 
 
-Specify the numerical solver and its configuration.
+In this last section, one may want to personalize the solver and various options like the solver type, the preconditioner and the tolerance.
 
 #### Example:
 
