@@ -196,11 +196,11 @@ outrefine_z2 =  4.0
 [../]
 ```
 
-### 3. Electrostatics Model 
+## 3. Electrostatics Model 
 
 This section is devoted to the physical model, e.g. the linearized Poisson-Boltzmann equation, through the definition of the boundary conditions, the dielectric environment, as well as the choice of various energy calculations.
 
-#### 📌 Note:
+### 📌 Note:
 Since only the linearized PBE is taken into account in the solver, parameter `linearized` can only assume the value 1. With further developments newer versions may allow to switch to the resolution of the full non-linear version of the equation.
 
 * Boundary conditions can be adjusted depending on the specific problem the user may want to solve. This allows to consider Neumann conditions (zero normal derivative), Dirichlet (fixed potential), or even Coulombic-like conditions (regarding the analytical behaviour on the boundary), by appropriately switching values for the parameter `bc_type` as showed below:
@@ -218,7 +218,7 @@ Since only the linearized PBE is taken into account in the solver, parameter `li
 * The temperature is set to 298,15 K
 
 
-#### Energy Options:
+### Energy Options:
 It is also possible to choice which kind of energy to calculate depending on specific interests and purposes. This can be performed by suitablly setting parameter `calc_energy`:
 
 | Values |  Description                                       |
@@ -253,11 +253,11 @@ calc_energy = 2                         # To calculate polarization and ionic so
 calc_coulombic = 1                      # No calculation of Coulombic energy
 ```
 
-### 4. Surface Definition 
+## 4. Surface Definition 
 
 Here one finds the definition of how the boundary between solute and solvent is generated using NanoShaper, a tool aimed at computing the molecular surface and pockets of a biomolecular system.
 
-#### Surface Types:
+### Surface Types:
 Dielectric boundaries are defined by means of surface types that can be specifically selected through a parameter `surface_type` that can assume three different values as follows:
 
 | Values |  Description                    |
@@ -270,7 +270,7 @@ Moreover the surface shape can be controlled through a specific numerical parame
 * In the case of Solvent Exluded Surfaces such parameter is the probe radius, approximately 1,4 Å for water
 * For skin or blobby surfaces instead it controls smoothness/blobbyness (-1.5)
 
-#### Stern Layer
+### Stern Layer
 It is possible to choose to include a Stern layer (an electric double layer) by setting `stern_layer_surf = 1` or equal to `0` otherwise. 
 It is also possible to choose its thickness (in Å) by imposing, for example, `stern_layer_thickness = 2.0`. 
 
@@ -286,13 +286,13 @@ stern_layer_thickness = 2.0   # Thickness of Stern layer (in Å)
 number_of_threads = 1         # Number of CPU threads for NanoShaper
 ```
 
-### 5. Solver and Algorithm 
+## 5. Solver and Algorithm 
 
 In this last section, one may want to personalize the solver and various options like the solver type, the preconditioner and the tolerance.
 
 * First consider the linear solver backend: two main options can be selected, a direct solver which is stable but much more memory demanding (linear_solver = 'mumps'), and an iterative solver which is far more recommended for large problems (linear_solver = 'lis').
 
-#### Common LIS Solver Flags:
+### Common LIS Solver Flags:
 These control the solver type, preconditioner, tolerances, and the kind of print level.
 
 | Parameter    | Description                   |  Values                  |
@@ -317,19 +317,16 @@ One may use the SSOR preconditioning with CGS solver and selecting a strict tole
 solver_options = -p\ ssor\ -ssor_omega\ 0.51\ -i\ cgs\ -tol\ 1.e-6\ -print\ 2\ -conv_cond\ 2\ -tol_w\ 0
 ```
 
-### 6. New Developments
+## 6. New Developments
 
 1. Nonlinear ionic density, going beyond the classical low-potential approximation. This linearization neglects important physical effects in systems with high surface charge, multivalent ions, or non-dilute ionic concentrations.
 2. Allow more flexible formats for `.pqr` files (particularly with or without the ChainID column) or the use of `.pdb` files
 
 
-### Troubleshooting
+## Troubleshooting
 
 * Ensure file paths are correct relative to the `.pot` file.
 * Use `.pqr` to avoid needing separate radius/charge files.
 * Double-check that `mesh_shape` settings are consistent with grid parameters.
 
----
-
-Feel free to copy and adapt this template into your own tutorial or documentation!
 
