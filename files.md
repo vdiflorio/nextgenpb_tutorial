@@ -142,16 +142,22 @@ refine_z2 = 4.0
 
 This section is devoted to the physical model, e.g. the linearized Poisson-Boltzmann equation, through the definition of the boundary conditions, the dielectric environment, as well as the choice of various energy calculations.
 
-#### Main Settings:
+| Option                         | Description                              |
+| ------------------------------ | -----------------------------------------|
+|  linearized                    |  Picked to select the linearized PBE     |
+|  bc_type                       |  Selects suitable boundary conditions    |
+|  molecular_dielectric_constant |  Dielectric constant inside the molecule |
+|  solvent_dielectric_constant   |  Dielectric constant of the solvent      |
+|  ionic_strength                |  Ionic strength measured in mol/L        |
+|  T (Temperature)               |  Temperature measured in Kelvin          |
 
-```ini
-linearized = 1                  # 1 = Linearized PBE; 0 = Nonlinear
-bc_type = 1                     # 0 = Neumann, 1 = Dirichlet, 2 = Coulombic
-molecular_dielectric_constant = 2
-solvent_dielectric_constant = 80
-ionic_strength = 0.145          # mol/L
-T = 298.15                      # Temperature in K
-```
+* Since only the linearized PBE is taken into account in the solver, this variable becomes set to 1
+* Boundary conditions can be of several types: 0 for Neumann (zero normal derivative), 1 for Dirichlet (fixed potential), 2 for Coulombic (analytical behaviour at the boundary)
+* The dielectric constant inside the molecule is typically set equal to 2
+* Since the solvent considered is mainly water, its dielectric constant is equal to 80
+* The ionic strength is set to 0,145 mol/L
+* The temperature is set to 298,15 K
+
 
 #### Energy Options:
 
@@ -198,7 +204,7 @@ In this last section, one may want to personalize the solver and various options
 * First consider the linear solver backend: two main options can be selected, a direct solver which is stable but much more memory demanding (linear_solver = 'mumps'), and an iterative solver which is far more recommended for large problems (linear_solver = 'lis').
 
 #### Common LIS Solver Flags:
-These control the solver type, preconditioner, tolerances, and print level
+These control the solver type, preconditioner, tolerances, and the kind of print level.
 
 | Option       | Description                  |
 | ------------ | ---------------------------- |
