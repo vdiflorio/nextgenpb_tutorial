@@ -42,94 +42,110 @@ Use this section to help you **write or modify your `.pot` files** for specific 
 
 These settings specify how molecular structure files are loaded and interpreted.
 
-| Parameter       | Description                                         | Default             |
-|----------------|-----------------------------------------------------|---------------------|
-| `filetype`     | Type of structure file: `pqr` or `pdb`              | `pqr`               |
-| `filename`     | Path to the structure file                          | `input.pqr`         |
-| `radius_file`  | Path to radius file (used only if `filetype = pdb`) | `radius.siz`        |
-| `charge_file`  | Path to charge file (used only if `filetype = pdb`) | `charge.crg`        |
-| `write_pqr`    | Whether to write processed `.pqr` file              | `0` (disabled)      |
-| `name_pqr`     | Output `.pqr` file name                             | `output.pqr`        |
+| Parameter      | Description                                         | Values               | Default         |
+|----------------|-----------------------------------------------------|-----------------------|-----------------|
+| `filetype`     | Structure file type                                 | `pqr`, `pdb`          | `pqr`           |
+| `filename`     | Path to the structure file                          | string (file path)    | `input.pqr`     |
+| `radius_file`  | Radius file path (used only if `filetype = pdb`)    | string (file path)    | `radius.siz`    |
+| `charge_file`  | Charge file path (used only if `filetype = pdb`)    | string (file path)    | `charge.crg`    |
+| `write_pqr`    | Whether to write a processed `.pqr` file            | `0`, `1`              | `0` (disabled)  |
+| `name_pqr`     | Name of the output `.pqr` file                      | string                | `output.pqr`    |
+
+**Example**: add the following section to `options.prm`:
 
 ```ini
+[input]
 filetype = pqr
 filename = path/to/structure.pqr
-radius_file = radius.siz
-charge_file = charge.crg
+radius_file = path/to/radius.siz
+charge_file = path/to/charge.crg
 write_pqr = 0
 name_pqr = output.pqr
+[../]
 ```
-
-
 
 ## 2. Mesh Settings
 
 This section defines how the computational grid (mesh) is built around the biomolecule.
 
-### Mesh Shape Options  (mesh_shape)
-The first step is devoted to the choice of the shape of the mesh as described in the table below:
+| Parameter      | Description                                       | Values                     | Default |
+|----------------|---------------------------------------------------|-----------------------------|---------|
+| `mesh_shape`   | Mesh shape configuration                          | `0`, `1`, `2`, `3`          | `0`     |
 
-| Option   | Description                            |
-| -------- | -------------------------------------- |
-|   0    |    Derefined mesh (based on perfil1/perfil2)   |
-|   1    |    Uniform cubic mesh    |
-|   2    |    Manual bounding box    |
-|   3    |    Focused mesh (local refinement) |
+### Mesh Shape Options
 
-**Default**: 0
+The `mesh_shape` parameter controls the overall structure of the computational domain:
+
+| Value | Description                                     |
+|-------|-------------------------------------------------|
+| `0`   | Derefined mesh (based on `perfil1` / `perfil2`) |
+| `1`   | Uniform cubic mesh                              |
+| `2`   | Manual bounding box                             |
+| `3`   | Focused mesh (local refinement)                 |
 
 
 ### Grid parameters
 
-| Parameter       | Description                                         | Default             |
-|----------------|-----------------------------------------------------|---------------------|
-| `perfil1`     | Base mesh spacing/resolution                | `0.8`               |
-| `perfil2`     | Finer resolution in derefined regions       | `0.2`         |
-| `scale`        | Refinement scale factor                    | `2`       |
-| `rand_center`  | Randomly shift center (for mesh_shape 0 or 1) | `0` `(disabled)`        |
+### Grid Parameters
+
+| Parameter      | Description                                              | Values          | Default         |
+|----------------|----------------------------------------------------------|-----------------|-----------------|
+| `perfil1`      | Base mesh spacing/resolution                             | float           | `0.8`           |
+| `perfil2`      | Finer resolution in derefined regions                    | float           | `0.2`           |
+| `scale`        | Refinement scale factor                                  | float           | `2`             |
+| `rand_center`  | Randomly shift center (for `mesh_shape = 0` or `1`)      | `0`, `1`        | `0` (disabled)  |
+
+
 
 
 ### Focused Mesh (if `mesh_shape = 3`)
 
-| Parameter       | Description                                         | Default             |
-|----------------|-----------------------------------------------------|---------------------|
-| `cx_foc`     | X coordinate of focused region center                 | `0.0`               |
-| `cy_foc`     | Y coordinate of focused region center                 | `0.0`         |
-| `cz_foc`     | Z coordinate of focused region center                 | `0.0`       |
-| `n_grid`  | Number of focused intervals | `10`        |
+| Parameter  | Description                                 | Values     | Default |
+|------------|---------------------------------------------|------------|---------|
+| `cx_foc`   | X coordinate of focused region center       | float      | `0.0`   |
+| `cy_foc`   | Y coordinate of focused region center       | float      | `0.0`   |
+| `cz_foc`   | Z coordinate of focused region center       | float      | `0.0`   |
+| `n_grid`   | Number of focused intervals                 | integer    | `10`    |
+
 
 
 ### Refinement (if `mesh_shape = 1 or 2`)
-Whenever `mesh_shape` is equal to 1 or 2, it is possible to set a uniform refinement level across the mesh (2^unilevel elements per side) or a minimum refinement level outside the refine box through the variables 'unilevel' and 'outlevel' respectively:
 
-| Parameter       | Description                                         | Default             |
-|----------------|-----------------------------------------------------|---------------------|
-| `unilevel`     | Uniform refinement level                 | `6`               |
-| `outlevel`     | Minimum refinement level outside box.    | `1`         |
+Whenever `mesh_shape` is equal to `1` or `2`, it is possible to set a uniform refinement level across the mesh (`2^unilevel` elements per side) or a minimum refinement level outside the refine box through the variables `unilevel` and `outlevel` respectively:
+
+| Parameter    | Description                                           | Values     | Default |
+|--------------|-------------------------------------------------------|------------|---------|
+| `unilevel`   | Uniform refinement level                              | integer    | `6`     |
+| `outlevel`   | Minimum refinement level outside box                  | integer    | `1`     |
 
 
 
-#### Bounding Box Parameters
-Whenever 'mesh_shape' is equal to 2, it is possible to create a bounding box by defining the physical domain directly:
+### Manual Bounding Box (if `mesh_shape = 2`)
 
-```ini
-x1 = -16  x2 = 16
-y1 = -16  y2 = 16
-z1 = -16  z2 = 16
-```
-
-#### Refinement Box 
-When 'mesh_shape' is equal to 1 or 2 and 'refine_box' = 1, one may refine the mesh within a subregion:
+Whenever `mesh_shape` is equal to `2`, it is possible to create a bounding box by defining the physical domain directly:
 
 ```ini
-refine_box = 0   # 1 = enable inner refinement box, 0 = disable
-refine_x1 = -4.0   
-refine_x2 = 4.0
-refine_y1 = -4.0   
-refine_y2 = 4.0
-refine_z1 = -4.0   
-refine_z2 = 4.0
+x1 = -16  
+x2 = 16
+y1 = -16  
+y2 = 16
+z1 = -16  
+z2 = 16
 ```
+
+### Refinement Box (optional)
+
+When `mesh_shape` is equal to `1` or `2` and `refine_box = 1`, one may refine the mesh within a subregion:
+
+| Parameter           | Description                          | Values       | Default         |
+|---------------------|--------------------------------------|--------------|-----------------|
+| `refine_box`        | Enable box refinement                | `0`, `1`     | `0` (disabled)  |
+| `outrefine_x1`      | X lower bound of refinement box      | real numbers | `-4.0`          |
+| `outrefine_x2`      | X upper bounds of refinement box     | real numbers | `4.0`           |
+| `outrefine_y1`      | Y lower bounds of refinement box     | real numbers | `-4.0`          |
+| `outrefine_y2`      | Y upper bounds of refinement box     | real numbers | `4.0`           |
+| `outrefine_z1`      | Z lower bounds of refinement box     | real numbers | `-4.0`          |
+| `outrefine_z2`      | Z upper bounds of refinement box     | real numbers | `4.0`           |
 
 
 ### 3. Electrostatics Model 
