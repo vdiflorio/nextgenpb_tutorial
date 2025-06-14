@@ -97,12 +97,6 @@ The first step is devoted to the choice of the shape of the mesh as described in
 | `cy_foc`     | Y coordinate of focused region center                 | `0.0`         |
 | `cz_foc`     | Z coordinate of focused region center                 | `0.0`       |
 | `n_grid`  | Number of focused intervals | `10`        |
-```ini
-cx_foc = 0   # X-center coordinate
-cy_foc = 0   # Y-center coordinate
-cz_foc = 0   # Z-center coordinate
-n_grid = 10  # Number of 1/scale-length intervals in the focused zone
-```
 
 
 ### Refinement (if `mesh_shape = 1 or 2`)
