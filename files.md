@@ -6,98 +6,97 @@ nav_order: 4
 
 # 📁 Input Files Guide
 
-
-## ✅ Protein Files 
-
-### PQR files
-A molecular structure file with atom coordinates, radii, and partial charges. 
-
-### PDB files
-Protein Data Bank files are slightly different and contain atomic coordinates, atom names, residues and informations regarding the biomolecule's connectivity. Unfortunately they lack of crucial information when comes to electrostatic simulations, requiring a conversion to PQR files by means of tools like PDB2PQR.
+This guide explains the required and optional input files for running electrostatic simulations with **NextGenPB**, particularly those governed by the Poisson–Boltzmann equation (PBE).
 
 ---
 
-## ✅ Configuration Files - PBE Solver Configuration Tutorial
+## ✅ Protein Structure Files
 
-This tutorial explains the structure and purpose of each section contained in the `options.pot` configuration file used to run electrostatics simulations by means of the Poisson–Boltzmann equation. It contains simulation parameters as well as the definition of how interactions get calculated, but you can use this as a reference to write or modify your own `.pot` files.
+### PQR Files (Recommended)
+`*.pqr` files contain atomic coordinates, partial charges, and radii. They are ideal for electrostatics simulations because they include all required per-atom physical data in a single file.
 
-### Notes:
-* Prefer `.pqr` format for simplicity, it includes all necessary atom data.
-* If using `.pdb`, you must provide radius and charge files separately.
+### PDB Files
+`*.pdb` (Protein Data Bank) files contain atomic positions and residue information but **do not include charges or radii**, which are necessary for electrostatics calculations. If you use `.pdb` files, you must supply:
+- A radius file (`.siz`)
+- A charge file (`.crg`)
 
+<!-- 💡 **Tip:** : Convert `.pdb` to `.pqr` using tools like **PDB2PQR** to simplify simulation setup. -->
 
-### Introduction
+---
 
-The `.pot` file contains the full set of instructions needed by the solver to:
+## ✅ Configuration Files — `options.prm`
 
-* Load and interpret the molecular structure
-* Generate the computational grid (mesh)
-* Define the electrostatic model and boundary conditions
-* Configure how the dielectric boundary surface is built
-* Choose and control the numerical solver used
+The `options.prm` file defines all simulation settings, including the molecular input, mesh generation, physical parameters, and solver configuration.
 
-### 1. Input Settings 
+Use this section to help you **write or modify your `.pot` files** for specific use cases.
 
-The first section of the options file concerns focuses on the specification of the types of molecular input data such as the file format and other associated information such as the paths.
+---
 
-#### Key Parameters:
+### 📌 General Notes:
+- Prefer `.pqr` files when possible — simpler and self-contained.
+- Ensure relative paths in `options.prm` are correct with respect to where you run the program.
 
-| Option   | Description                            |
-| -------- | -------------------------------------- |
-|       |        |
-|       |        |
-|       |        |
-|       |        |
+---
 
+## 1. Input Settings
+
+These settings specify how molecular structure files are loaded and interpreted.
+
+| Parameter       | Description                                         | Default             |
+|----------------|-----------------------------------------------------|---------------------|
+| `filetype`     | Type of structure file: `pqr` or `pdb`              | `pqr`               |
+| `filename`     | Path to the structure file                          | `input.pqr`         |
+| `radius_file`  | Path to radius file (used only if `filetype = pdb`) | `radius.siz`        |
+| `charge_file`  | Path to charge file (used only if `filetype = pdb`) | `charge.crg`        |
+| `write_pqr`    | Whether to write processed `.pqr` file              | `0` (disabled)      |
+| `name_pqr`     | Output `.pqr` file name                             | `output.pqr`        |
 
 ```ini
-filetype = pqr                     # Choose between 'pqr' (recommended) and 'pdb'.
-filename = path/to/structure.pqr   # Main input file containing atoms, radii, and charges.
-radius_file = radius.siz           # Required only for 'pdb' input type, containing the radii for all atoms in the 'pdb' file
-charge_file = charge.crg           # Required only for 'pdb' input type, containing the charges for all atoms in the 'pdb' file
-write_pqr = 0                      # Set to 1 to write the processed structure to disk, 0 otherwise
-name_pqr = output.pqr              # Output file name if write_pqr is set to 1.
+filetype = pqr
+filename = path/to/structure.pqr
+radius_file = radius.siz
+charge_file = charge.crg
+write_pqr = 0
+name_pqr = output.pqr
 ```
 
 
-### 2. Mesh Settings
 
-As usual in physical simulations, when the dynamics is described by differential equations, it becomes fundamental to properly define the computational mesh that discretizes the 3D space around the system. In this case the discretization is developed around the biomolecule under investigation, but its construction can be supervised with a series of control variables.
+## 2. Mesh Settings
 
-#### Mesh Shape Options 
+This section defines how the computational grid (mesh) is built around the biomolecule.
+
+### Mesh Shape Options  (mesh_shape)
 The first step is devoted to the choice of the shape of the mesh as described in the table below:
 
 | Option   | Description                            |
 | -------- | -------------------------------------- |
-|       |        |
-|       |        |
-|       |        |
-|       |        |
+|   0    |    Derefined mesh (based on perfil1/perfil2)   |
+|   1    |    Uniform cubic mesh    |
+|   2    |    Manual bounding box    |
+|   3    |    Focused mesh (local refinement) |
+
+**Default**: 0
 
 
+### Grid parameters
 
-```ini
-0 = Derefined mesh based on perfil1/perfil2
-1 = Uniform cubic mesh
-2 = Manual bounding box
-3 = Focused mesh (local refinement)
-```
-
-The value assigned to the variable 'mesh_shape' controls the way the grid is generated:
+| Parameter       | Description                                         | Default             |
+|----------------|-----------------------------------------------------|---------------------|
+| `perfil1`     | Base mesh spacing/resolution                | `0.8`               |
+| `perfil2`     | Finer resolution in derefined regions       | `0.2`         |
+| `scale`        | Refinement scale factor                    | `2`       |
+| `rand_center`  | Randomly shift center (for mesh_shape 0 or 1) | `0` `(disabled)`        |
 
 
-For the grid spacing control it is useful to handle the following parameters:
+### Focused Mesh (if `mesh_shape = 3`)
 
-```ini
-perfil1 = 0.8         # Base grid spacing/resolution
-perfil2 = 0.5         # Finer resolution in derefined zones (if active)
-scale   = 2.0         # Used in modes 0 and 3 to set grid density
-rand_center = 0       # Optional: Randomly shift mesh center, typically useful for for stochastic sampling (only for mesh_shape=0,1)
-```
-
-#### Focused Mesh 
-When 'mesh_shape = 3' it is possible to define the center and number of grid intervals in the focused region:
-
+| Parameter       | Description                                         | Default             |
+|----------------|-----------------------------------------------------|---------------------|
+| `cx_foc`     | X coordinate of focused region center                 | `0.0`               |
+| `cy_foc`     | Y coordinate of focused region center                 | `0.0`         |
+| `cz_foc`     | Z coordinate of focused region center                 | `0.0`       |
+| `n_grid`  | Number of focused intervals | `10`        |
 ```ini
 cx_foc = 0   # X-center coordinate
 cy_foc = 0   # Y-center coordinate
@@ -106,13 +105,14 @@ n_grid = 10  # Number of 1/scale-length intervals in the focused zone
 ```
 
 
-#### Refinement
-Whenever 'mesh_shape' is equal to 1 or 2, it is possible to set a uniform refinement level across the mesh (2^unilevel elements per side) or a minimum refinement level outside the refine box through the variables 'unilevel' and 'outlevel' respectively:
+### Refinement (if `mesh_shape = 1 or 2`)
+Whenever `mesh_shape` is equal to 1 or 2, it is possible to set a uniform refinement level across the mesh (2^unilevel elements per side) or a minimum refinement level outside the refine box through the variables 'unilevel' and 'outlevel' respectively:
 
-```ini
-unilevel  = 6     # Uniform refinement 
-outlevel  = 1     # Mininum refinement  
-```
+| Parameter       | Description                                         | Default             |
+|----------------|-----------------------------------------------------|---------------------|
+| `unilevel`     | Uniform refinement level                 | `6`               |
+| `outlevel`     | Minimum refinement level outside box.    | `1`         |
+
 
 
 #### Bounding Box Parameters
