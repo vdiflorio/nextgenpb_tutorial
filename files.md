@@ -158,7 +158,7 @@ You can locally refine a portion of the domain by enabling refine_box. This is h
 
 
 
-Example: Configuration in .prm File
+**Example**: Configuration in .prm File
 
 ```bash
 [mesh]
@@ -219,20 +219,34 @@ This section is devoted to the physical model, e.g. the linearized Poisson-Boltz
 
 #### Energy Options:
 
-```ini
+```bash
 calc_energy = 2        # 1 = polarization, 2 = + ionic solvation
 calc_coulombic = 1     # Include Coulombic energy calculation
 ```
 
 #### Output Control:
 
-```ini
+```bash
 atoms_write   = 0       # Write potential at atom centers
 map_type      = vtu     # Format for visualization (vtu for ParaView)
 potential_map = 0       # Export potential map
 surf_write    = 0       # Export surface potential
 ```
 
+**Example**: setting the electrostatic options:
+
+```bash
+linearized = 1                          # Linearized Poisson–Boltzmann equation
+bc_type = 1                             # Boundary conditions set to Dirichlet (fixed potential)
+
+molecular_dielectric_constant = 2       # Dielectric constant inside the molecule
+solvent_dielectric_constant = 80        # Dielectric constant of the solvent (e.g., water)
+ionic_strength = 0.145                  # Ionic strength (mol/L)
+T = 298.15                              # Temperature in Kelvin
+
+calc_energy = 2                         # To calculate polarization and ionic solvation energy
+calc_coulombic = 1                      # No calculation of Coulombic energy
+```
 
 ### 4. Surface Definition 
 
@@ -254,6 +268,18 @@ Moreover the surface shape can be controlled through a specific numerical parame
 #### Stern Layer
 It is possible to choose to include a Stern layer (an electric double layer) by setting `stern_layer_surf = 1` or equal to `0` otherwise. 
 It is also possible to choose its thickness (in Å) by imposing, for example, `stern_layer_thickness = 2.0`. 
+
+**Example**: setting some surface options:
+
+```bash
+surface_type = 0              # Select the Solvent Excluded Surface (SES)
+surface_parameter = 1.4   
+
+stern_layer_surf = 0          # No Stern layer
+stern_layer_thickness = 2.0   # Thickness of Stern layer (in Å)   
+
+number_of_threads = 1         # Number of CPU threads for NanoShaper
+```
 
 ### 5. Solver and Algorithm 
 
