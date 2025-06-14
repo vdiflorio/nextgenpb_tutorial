@@ -200,17 +200,18 @@ outrefine_z2 =  4.0
 
 This section is devoted to the physical model, e.g. the linearized Poisson-Boltzmann equation, through the definition of the boundary conditions, the dielectric environment, as well as the choice of various energy calculations.
 
-| Option                         | Description                              |
-| ------------------------------ | -----------------------------------------|
-|  linearized                    |  Picked to select the linearized PBE     |
-|  bc_type                       |  Selects suitable boundary conditions    |
-|  molecular_dielectric_constant |  Dielectric constant inside the molecule |
-|  solvent_dielectric_constant   |  Dielectric constant of the solvent      |
-|  ionic_strength                |  Ionic strength measured in mol/L        |
-|  T (Temperature)               |  Temperature measured in Kelvin          |
+#### 📌 Note:
+Since only the linearized PBE is taken into account in the solver, parameter `linearized` can only assume the value 1. With further developments newer versions may allow to switch to the resolution of the full non-linear version of the equation.
 
-* Since only the linearized PBE is taken into account in the solver, this variable becomes set to 1
-* Boundary conditions can be of several types: 0 for Neumann (zero normal derivative), 1 for Dirichlet (fixed potential), 2 for Coulombic (analytical behaviour at the boundary)
+* Boundary conditions can be adjusted depending on the specific problem the user may want to solve. This allows to consider Neumann conditions (zero normal derivative), Dirichlet (fixed potential), or even Coulombic-like conditions (regarding the analytical behaviour on the boundary), by appropriately switching values for the parameter `bc_type` as showed below:
+
+| Values |  Boundary condition   |
+|--------|---------------------- |
+|   `0`  |  Neumann              |
+|   `1`  |  Dirichlet            |
+|   `2`  |  Coulombic            |
+
+
 * The dielectric constant inside the molecule is typically set equal to 2
 * Since the solvent considered is mainly water, its dielectric constant is equal to 80
 * The ionic strength is set to 0,145 mol/L
@@ -218,13 +219,17 @@ This section is devoted to the physical model, e.g. the linearized Poisson-Boltz
 
 
 #### Energy Options:
+It is also possible to choice which kind of energy to calculate depending on specific interests and purposes. This can be performed by suitablly setting parameter `calc_energy`:
 
-```bash
-calc_energy = 2        # 1 = polarization, 2 = + ionic solvation
-calc_coulombic = 1     # Include Coulombic energy calculation
-```
+| Values |  Description                                       |
+|--------|--------------------------------------------------- |
+|   `0`  | No energy calculation                              |
+|   `1`  | Calculates the polaritazion energy                 |
+|   `2`  | Calculates polarization and ionic solvation energy |
 
-#### Output Control:
+While through `calc_coulombic` set to 1 is is possible to neglect the calculation of the Coulombic energy.
+
+**Example**: Output Control
 
 ```bash
 atoms_write   = 0       # Write potential at atom centers
@@ -253,15 +258,15 @@ calc_coulombic = 1                      # No calculation of Coulombic energy
 Here one finds the definition of how the boundary between solute and solvent is generated using NanoShaper, a tool aimed at computing the molecular surface and pockets of a biomolecular system.
 
 #### Surface Types:
-Dielectric boundaries are defined by means of surface types that can be specifically selected. 
+Dielectric boundaries are defined by means of surface types that can be specifically selected through a parameter `surface_type` that can assume three different values as follows:
 
-| Option | Description                     |
+| Values |  Description                    |
 | ------ | ------------------------------- |
 |  `0`   |  Solvent Excluded Surface (SES) |
 |  `1`   |  Skin Surface                   |
 |  `2`   |  Blobby Surface                 |
 
-Moreover the surface shape can be controlled through a specific numerical parameter:
+Moreover the surface shape can be controlled through a specific numerical parameter (`surface_parameter`):
 * In the case of Solvent Exluded Surfaces such parameter is the probe radius, approximately 1,4 Å for water
 * For skin or blobby surfaces instead it controls smoothness/blobbyness (-1.5)
 
@@ -290,14 +295,14 @@ In this last section, one may want to personalize the solver and various options
 #### Common LIS Solver Flags:
 These control the solver type, preconditioner, tolerances, and the kind of print level.
 
-| Option       | Description                  |
-| ------------ | ---------------------------- |
-| `-i`         | Sets the solver type         |
-| `-p`         | Chooses the preconditioner   |
-| `-tol`       | Sets a convergence tolerance |
-| `-print`     | Output level                 |
-| `-conv_cond` | Convergence condition type   |
-| `-tol_w`     | Warning tolerance
+| Parameter    | Description                   |  Values                  |
+| ------------ | ----------------------------- | -------------------------|
+| `-i`         |  Sets the solver type         | `cg`, `cgs`, `bicgstab`  |
+| `-p`         |  Chooses the preconditioner   |  `ilu`, `ssor`, `jacobi` |
+| `-tol`       |  Sets a convergence tolerance |  real number             |
+| `-print`     |  Output level                 |  `0`,`1`,`2`             |
+| `-conv_cond` |  Convergence condition type   |  `2` (default)           |
+| `-tol_w`     |  Warning tolerance            |  real number             |
 
 * The options for the solver type can be cg, cgs, bicgstab, etc.
 * The preconditioner can be set to ilu, ssor, jacobi, etc.
@@ -306,7 +311,7 @@ These control the solver type, preconditioner, tolerances, and the kind of print
 * Convergence condition type allows to select which type of norm convergence to select
 
 
-#### Example
+**Example**:
 One may use the SSOR preconditioning with CGS solver and selecting a strict tolerance with the command:
 ```bash
 solver_options = -p\ ssor\ -ssor_omega\ 0.51\ -i\ cgs\ -tol\ 1.e-6\ -print\ 2\ -conv_cond\ 2\ -tol_w\ 0
