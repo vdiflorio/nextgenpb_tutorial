@@ -212,10 +212,9 @@ Since only the linearized PBE is taken into account in the solver, parameter `li
 |   `2`  |  Coulombic            |
 
 
-* The dielectric constant inside the molecule is typically set equal to 2
-* Since the solvent considered is mainly water, its dielectric constant is equal to 80
-* The ionic strength is set to 0,145 mol/L
-* The temperature is set to 298,15 K
+* The dielectric constant inside the molecule is controlled through a specific parameter `molecular_dielectric_constant` while for the solvent, which is water most of the times, it is possible to adjust `solvent_dielectric_constant`.
+* The ionic strength, the measure of the concentration of ions in the solution, can be set up by means of parameter `ionic_strength` and it is measured in `mol/L`. 
+* The temperature `T` is assumed to be equal to the environmental temperature 298,15 K.
 
 
 ### Energy Options:
@@ -304,8 +303,7 @@ These control the solver type, preconditioner, tolerances, and the kind of print
 | `-conv_cond` |  Convergence condition type   |  `2` (default)           |
 | `-tol_w`     |  Warning tolerance            |  real number             |
 
-* The options for the solver type can be cg, cgs, bicgstab, etc.
-* The preconditioner can be set to ilu, ssor, jacobi, etc.
+
 * The tolerance criteria can be fixed freely
 * The verbosity, through `-print`, can be selected to be 0 if silent, 1 for final and 2 for verbose
 * Convergence condition type allows to select which type of norm convergence to select
