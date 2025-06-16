@@ -25,7 +25,7 @@ Files with `.pdb` extension contain atomic coordinates and residue information *
 - A **radius file** (`.siz`)
 - A **charge file** (`.crg`)
 
-💡 *Tip: Use tools like `PDB2PQR` to convert `.pdb` to `.pqr` for easier setup.*
+>💡 **Tip:** Use tools like `PDB2PQR` to convert `.pdb` to `.pqr` for easier setup.
 
 ---
 
@@ -44,9 +44,6 @@ The main configuration file `options.prm` defines:
 
 ---
 
-
-
----
 
 ## 1️⃣ Molecular Input Settings
 
@@ -73,6 +70,8 @@ write_pqr = 0
 name_pqr = output.pqr
 [../]
 ```
+
+---
 
 ## 2️⃣ Mesh Generation Settings
 
@@ -206,6 +205,8 @@ outrefine_z2 =  4.0
 [../]
 ```
 
+---
+
 ## 3️⃣ Electrostatics Model Settings
 
 Defines the physical model used to compute the electrostatic potential, including the Poisson–Boltzmann equation configuration, boundary conditions, dielectric constants, ionic strength, and energy calculation options.
@@ -218,7 +219,7 @@ Currently, **only the linearized Poisson–Boltzmann equation** is implemented. 
 |---------------------|--------------------------------------|--------------|-----------------|
 | `linearized`        | Enable linearized PBE (mandatory for now) | `1`     | `1`   |
 
-⚠️ **Note**: The solver only supports the linearized version. Future versions may add support for the full nonlinear PBE.
+>⚠️ **Note**: The solver only supports the linearized version. Future versions may add support for the full nonlinear PBE.
 
 ### Boundary Conditions (bc_type)
 
@@ -264,14 +265,14 @@ Choose what type of energy the solver should compute based on your goals (e.g. e
 | Parameter           | Description                          | Values       | Default         |
 |---------------------|--------------------------------------|--------------|-----------------|
 | `calc_energy`      | Energy to calculate     | `0`, `1`, `2`     | `2`   |
-| `calc_coulombic`      | Whether to compute Coulombic energy (1 = yes)      | `0`, `1`     | `0`   |
+| `calc_coulombic`      | Whether to compute Coulombic energy (1 = yes)      | `0` = no, `1`= yes   | `0`   |
 
 #### Available Options for `calc_energy`:
 
 | Values |  Description                                       |
 |--------|--------------------------------------------------- |
 |   `0`  | No energy calculation                              |
-|   `1`  | Calculates the polaritazion energy                 |
+|   `1`  | Calculates the polarization energy                 |
 |   `2`  | Calculates polarization and ionic solvation energy |
 
 
@@ -287,17 +288,17 @@ These parameters allow you to customize which data is written to disk and how it
 
 | Parameter       | Description                                                                 | Values                 | Default |
 |-----------------|-----------------------------------------------------------------------------|------------------------|---------|
-| `atoms_write`   | Write electrostatic potential at atomic positions (e.g., atom centers)      | `0` = no<br>`1` = yes  | `0`     |
+| `atoms_write`   | Write electrostatic potential at atomic positions (e.g., atom centers)      | `0` = no `1` = yes  | `0`     |
 | `map_type`      | File format for exporting potential maps or fields                          | `vtu`, `vtk`, etc.     | `vtu`   |
-| `potential_map` | Export a 3D potential map over the entire computational grid                | `0` = no<br>`1` = yes  | `0`     |
-| `surf_write`    | Export potential on the molecular surface (e.g., SES or SAS)                | `0` = no<br>`1` = yes  | `0`     |
+| `potential_map` | Export a 3D potential map over the entire computational grid                | `0` = no`1` = yes  | `0`     |
+| `surf_write`    | Export potential on the molecular surface (e.g., SES or SAS)                | `0` = no`1` = yes  | `0`     |
 
----
 
 #### 📘 Detailed Descriptions
 
 ##### `atoms_write = 1`
 Writes the electrostatic potential at each atomic center (e.g., where the atoms' charges are located).  
+
 Useful for:
 - Analyzing energy contributions at specific atoms
 - Comparing potentials across charged and polar residues
@@ -342,13 +343,13 @@ potential_map = 1       # Export full volumetric potential map
 surf_write    = 1       # Export potential on the molecular surface
 ```
 
+---
+
 ## 4️⃣ Surface Definition 
 
 This section defines **how the boundary between solute and solvent** is generated using [**NanoShaper**](https://gitlab.iit.it/SDecherchi/nanoshaper/), a tool for computing molecular surfaces and identifying cavities or pockets.
 
 The molecular surface plays a critical role in determining how the dielectric constant changes across space and where electrostatic discontinuities occur, which directly impacts the accuracy of the Poisson–Boltzmann solver.
-
----
 
 ### Surface Types (`surface_type`)
 
@@ -383,7 +384,7 @@ A **Stern layer** can be added between the solute and the solvent to model an ad
 | `stern_layer_surf`     | Enables the Stern layer                               | `0` (off) / `1` (on) | `0`     |
 | `stern_layer_thickness`| Thickness of the Stern layer in Ångströms             | Float (Å)          | `2.0`   |
 
-### 🧵 Threads and Performance
+### Threads and Performance
 
 | Parameter            | Description                              | Values | Default |
 |---------------------|------------------------------------------|--------|---------|
@@ -406,6 +407,8 @@ stern_layer_thickness = 2.0    # Thickness (in Å) if Stern layer were enabled
 number_of_threads = 1          # Run NanoShaper using 1 CPU thread
 ```
 
+---
+
 ## 5️⃣ Solver and Algorithm 
 
 This section configures the **linear solver** and associated options used in solving the discretized Poisson–Boltzmann equation. You can customize the **solver type**, **preconditioner**, **tolerance criteria**, and **verbosity**.
@@ -414,7 +417,7 @@ This section configures the **linear solver** and associated options used in sol
 
 
 
-### 🛠️ Linear Solver Backend (`linear_solver`)
+### Linear Solver Backend (`linear_solver`)
 
 Two main solver backends are available:
 
@@ -442,7 +445,7 @@ When using `linear_solver = 'lis'`, additional solver options can be set using a
 | `-tol_w`      | Warning tolerance                        | Float (e.g., `0.0`)            |
 
 
-### 📝 Notes on Usage
+### Notes on Usage
 
 - `-i`: Choose an **iterative algorithm** (e.g., CGS is good for nonsymmetric systems).
 - `-p`: Select an **appropriate preconditioner**. SSOR often improves convergence with CG/CGS.
@@ -467,7 +470,3 @@ This instructs the solver to:
 - Set convergence tolerance to 1e-6
 - Print detailed solver information
 - Enforce a strict convergence criterion
-
-
-
-
