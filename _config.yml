@@ -13,7 +13,5 @@ markdown: kramdown
 kramdown:
   input: GFM
 
-# Inserisci il CSS personalizzato
-
-include:
+extra_css:
   - assets/css/custom.css
