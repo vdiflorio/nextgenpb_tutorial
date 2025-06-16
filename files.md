@@ -350,65 +350,123 @@ The molecular surface plays a critical role in determining how the dielectric co
 
 ---
 
-### Surface Types:
-Dielectric boundaries are defined by means of surface types that can be specifically selected through a parameter `surface_type` that can assume three different values as follows:
+### Surface Types (`surface_type`)
 
-| Values |  Description                    |
-| ------ | ------------------------------- |
-|  `0`   |  Solvent Excluded Surface (SES) |
-|  `1`   |  Skin Surface                   |
-|  `2`   |  Blobby Surface                 |
+The parameter `surface_type` defines the **shape and complexity** of the molecular surface that separates the solute from the solvent.
 
-Moreover the surface shape can be controlled through a specific numerical parameter (`surface_parameter`):
-* In the case of Solvent Exluded Surfaces such parameter is the probe radius, approximately 1,4 Å for water
-* For skin or blobby surfaces instead it controls smoothness/blobbyness (-1.5)
+
+| Value | Description                          | Use Case                                      |
+|-------|--------------------------------------|-----------------------------------------------|
+| `0`   | **Solvent Excluded Surface (SES)**   | Default, physically meaningful boundary       |
+| `1`   | **Skin Surface**                     | Smooth representation, better for visuals     |
+| `2`   | **Blobby Surface**                   | Idealized surface with tunable roundness      |
+
+
+
+
+### Surface Parameter (`surface_parameter`)
+
+This parameter controls how the surface is shaped, and its meaning depends on the selected `surface_type`.
+
+| Surface Type | Meaning of `surface_parameter`                                | Recommended Value |
+|--------------|---------------------------------------------------------------|-------------------|
+| SES (`0`)    | **Probe radius** (in Å) used to roll over the atomic surface   | `1.4` for water   |
+| Skin/Blobby (`1`/`2`) | Controls **smoothness** or **blobbyness** of surface      | `-1.5`            |
+
 
 ### Stern Layer
-It is possible to choose to include a Stern layer (an electric double layer) by setting `stern_layer_surf = 1` or equal to `0` otherwise. 
-It is also possible to choose its thickness (in Å) by imposing, for example, `stern_layer_thickness = 2.0`. 
 
-**Example**: setting some surface options:
+A **Stern layer** can be added between the solute and the solvent to model an additional interfacial dielectric zone (e.g., ion-impermeable layer).
 
-```bash
-surface_type = 0              # Select the Solvent Excluded Surface (SES)
-surface_parameter = 1.4   
+| Parameter               | Description                                           | Values/Units       | Default |
+|------------------------|-------------------------------------------------------|--------------------|---------|
+| `stern_layer_surf`     | Enables the Stern layer                               | `0` (off) / `1` (on) | `0`     |
+| `stern_layer_thickness`| Thickness of the Stern layer in Ångströms             | Float (Å)          | `2.0`   |
 
-stern_layer_surf = 0          # No Stern layer
-stern_layer_thickness = 2.0   # Thickness of Stern layer (in Å)   
+### 🧵 Threads and Performance
 
-number_of_threads = 1         # Number of CPU threads for NanoShaper
+| Parameter            | Description                              | Values | Default |
+|---------------------|------------------------------------------|--------|---------|
+| `number_of_threads` | Number of CPU threads used by NanoShaper | Integer| `1`     |
+
+Use more threads to accelerate surface generation on multi-core systems.
+
+
+
+**Example**: setting the surface options:
+
+
+```ini
+surface_type = 0               # Select the Solvent Excluded Surface (SES)
+surface_parameter = 1.4        # Use a probe radius of 1.4 Å (typical for water)
+
+stern_layer_surf = 0           # Do not use a Stern layer
+stern_layer_thickness = 2.0    # Thickness (in Å) if Stern layer were enabled
+
+number_of_threads = 1          # Run NanoShaper using 1 CPU thread
 ```
 
 ## 5️⃣ Solver and Algorithm 
 
-In this last section, one may want to personalize the solver and various options like the solver type, the preconditioner and the tolerance.
+This section configures the **linear solver** and associated options used in solving the discretized Poisson–Boltzmann equation. You can customize the **solver type**, **preconditioner**, **tolerance criteria**, and **verbosity**.
 
-* First consider the linear solver backend: two main options can be selected, a direct solver which is stable but much more memory demanding (linear_solver = 'mumps'), and an iterative solver which is far more recommended for large problems (linear_solver = 'lis').
-
-### Common LIS Solver Flags:
-These control the solver type, preconditioner, tolerances, and the kind of print level.
-
-| Parameter    | Description                   |  Values                  |
-| ------------ | ----------------------------- | -------------------------|
-| `-i`         |  Sets the solver type         | `cg`, `cgs`, `bicgstab`  |
-| `-p`         |  Chooses the preconditioner   |  `ilu`, `ssor`, `jacobi` |
-| `-tol`       |  Sets a convergence tolerance |  real number             |
-| `-print`     |  Output level                 |  `0`,`1`,`2`             |
-| `-conv_cond` |  Convergence condition type   |  `2` (default)           |
-| `-tol_w`     |  Warning tolerance            |  real number             |
+> ** ⚠️ Warning: ** This part is just for advanced users!
 
 
-* The tolerance criteria can be fixed freely
-* The verbosity, through `-print`, can be selected to be 0 if silent, 1 for final and 2 for verbose
-* Convergence condition type allows to select which type of norm convergence to select
+
+### 🛠️ Linear Solver Backend (`linear_solver`)
+
+Two main solver backends are available:
+
+| Backend Value       | Description                                                  | Use Case                    |
+|---------------------|--------------------------------------------------------------|-----------------------------|
+| `'mumps'`           | **Direct solver**, memory-intensive but robust               | Small to medium problems    |
+| `'lis'`             | **Iterative solver**, scalable and efficient (Default)               | Recommended for large grids |
+
+> **Note**: For large biomolecular systems, `lis` is generally preferred due to its lower memory consumption and greater flexibility.
+
+---
+
+###  Common LIS Solver Flags (`solver_options`)
+
+When using `linear_solver = 'lis'`, additional solver options can be set using a string in the format of command-line flags.
+
+| Flag          | Description                              | Possible Values                |
+|---------------|------------------------------------------|---------------------------------|
+| `-i`          | Solver type                              | `cg`, `cgs`, `bicgstab`, etc.  |
+| `-p`          | Preconditioner type                      | `ilu`, `ssor`, `jacobi`, etc.  |
+| `-ssor_omega` | Relaxation parameter (for SSOR only)     | Float (e.g., `0.51`)           |
+| `-tol`        | Convergence tolerance                    | Float (e.g., `1e-6`)           |
+| `-print`      | Output verbosity                         | `0` = silent, `1` = final, `2` = verbose |
+| `-conv_cond`  | Convergence condition type               | `2` = default norm criterion   |
+| `-tol_w`      | Warning tolerance                        | Float (e.g., `0.0`)            |
+
+
+### 📝 Notes on Usage
+
+- `-i`: Choose an **iterative algorithm** (e.g., CGS is good for nonsymmetric systems).
+- `-p`: Select an **appropriate preconditioner**. SSOR often improves convergence with CG/CGS.
+- `-ssor_omega`: Relaxation factor (commonly set between `0.5` and `1.0`).
+- `-tol`: A smaller value means stricter convergence (e.g., `1e-6` is typical).
+- `-print`: Choose verbosity level (`0`: silent, `1`: summary, `2`: detailed).
+- `-conv_cond`: Controls **norm used** for convergence (usually leave at `2`).
+- `-tol_w`: Tolerance threshold below which warnings are issued.
 
 
 **Example**:
-One may use the SSOR preconditioning with CGS solver and selecting a strict tolerance with the command:
-```bash
+
+Below is an example using the **CGS solver** with **SSOR preconditioning**, a tight convergence tolerance, and full verbosity:
+
+```ini
+linear_solver = lis
 solver_options = -p\ ssor\ -ssor_omega\ 0.51\ -i\ cgs\ -tol\ 1.e-6\ -print\ 2\ -conv_cond\ 2\ -tol_w\ 0
 ```
-
+This instructs the solver to:
+- Use SSOR as the preconditioner with ω = 0.51
+- Use CGS as the iterative method
+- Set convergence tolerance to 1e-6
+- Print detailed solver information
+- Enforce a strict convergence criterion
 
 
 
