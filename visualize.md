@@ -143,24 +143,24 @@ linear solver status  : normal end
 
 ##  Output Files
 
-After the simulation completes, NextGenPB will generate one or more of the following files:
+After the simulation completes, NextGenPB will generate one or more of the following files depending on the [input options](files.md):
+- `.vtu`: 3D potential field for visualization
 
 
-### 🧭 Steps
+### 🧭 Visualizing in ParaView
 
 1. Open **ParaView**
 2. Go to `File > Open`, select the `.vtk` file
-3. Click **Apply** in the Properties panel
-4. Use "Color By" → `Potential`
-5. Add filters such as:
+3. Click **Apply** in the **Properties** panel
+4. In the top bar, choose **Color By** → `Potential`
+5. Add filters to explore the data:
    - `Slice` to inspect cross sections
    - `Contour` for isopotential surfaces
-   - `Volume` to explore in 3D
+   - `Volume` to view the full 3D field
 
 ---
-
 ### 🖼️ Example Visualization
 
-ParaView allows overlaying the molecule structure (e.g., from `.pdb`) with the potential field for detailed inspection.
+You can overlay the molecular structure (e.g., from a `.pdb` file) with the potential field to inspect electrostatic interactions in detail.
 
-Go back to [Run Instructions](run.md) or return to [Tutorial Home](index.md).
+➡️ [Back to Run Instructions](run.md) | [Return to Tutorial Home](index.md)
