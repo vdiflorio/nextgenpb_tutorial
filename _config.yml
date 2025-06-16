@@ -13,14 +13,14 @@ markdown: kramdown
 kramdown:
   input: GFM
 
-# Per includere asset custom
+# Include directory per asset personalizzati
 include:
-  - assets/css/custom.css
+  - assets/css
 
-# Dove trovare il CSS personalizzato
+# Configurazione tema
 just_the_docs:
   aux_links:
     "GitHub":
       - "//github.com/tuo-username/nextgenpb-tutorial"
   custom_css:
-    - /assets/css/custom.css
+    - "assets/css/custom.css"
