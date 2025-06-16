@@ -5,22 +5,15 @@ remote_theme: just-the-docs/just-the-docs
 color_scheme: light
 search_enabled: true
 
-# Ordine di navigazione (facoltativo, per ordinare i file nel menu)
 nav_sort: case_insensitive
 
-# Per link relativi
 markdown: kramdown
 kramdown:
   input: GFM
 
-# Include directory per asset personalizzati
 include:
   - assets/css
 
-# Configurazione tema
 just_the_docs:
-  aux_links:
-    "GitHub":
-      - "//github.com/vdiflorio/nextgenpb-tutorial"
   custom_css:
-    - "assets/css/custom.css"
+    - assets/css/custom.css
