@@ -208,27 +208,65 @@ outrefine_z2 =  4.0
 
 ## 3️⃣ Electrostatics Model Settings
 
-This section is devoted to the physical model, e.g. the linearized Poisson-Boltzmann equation, through the definition of the boundary conditions, the dielectric environment, as well as the choice of various energy calculations.
+Defines the physical model used to compute the electrostatic potential, including the Poisson–Boltzmann equation configuration, boundary conditions, dielectric constants, ionic strength, and energy calculation options.
 
-### 📌 Note:
-Since only the linearized PBE is taken into account in the solver, parameter `linearized` can only assume the value 1. With further developments newer versions may allow to switch to the resolution of the full non-linear version of the equation.
+### Poisson–Boltzmann Equation (linearized)
 
-* Boundary conditions can be adjusted depending on the specific problem the user may want to solve. This allows to consider Neumann conditions (zero normal derivative), Dirichlet (fixed potential), or even Coulombic-like conditions (regarding the analytical behaviour on the boundary), by appropriately switching values for the parameter `bc_type` as showed below:
+Currently, **only the linearized Poisson–Boltzmann equation** is implemented. Set the following parameter accordingly:
+
+| Parameter           | Description                          | Values       | Default         |
+|---------------------|--------------------------------------|--------------|-----------------|
+| `linearized`        | Enable linearized PBE (mandatory for now) | `1`     | `1`   |
+
+⚠️ **Note**: The solver only supports the linearized version. Future versions may add support for the full nonlinear PBE.
+
+### Boundary Conditions (bc_type)
+
+You can choose among different boundary conditions to better represent the physical environment of your problem. This affects how the potential behaves at the domain boundaries.
+
+| Parameter           | Description                          | Values       | Default         |
+|---------------------|--------------------------------------|--------------|-----------------|
+| `bc_type`        | Type of boundary condition | `0`, `1`, `2`     | `1`   |
+
+#### Available Options for `bc_type`:
 
 | Values |  Boundary condition   |
 |--------|---------------------- |
-|   `0`  |  Neumann              |
-|   `1`  |  Dirichlet            |
-|   `2`  |  Coulombic            |
+|   `0`  |  Neumann – zero normal derivative              |
+|   `1`  |  Dirichlet  - zero potential           |
+|   `2`  |  Coulombic – analytical Debye-Hückel decay at boundary       |
 
 
-* The dielectric constant inside the molecule is controlled through a specific parameter `molecular_dielectric_constant` while for the solvent, which is water most of the times, it is possible to adjust `solvent_dielectric_constant`.
-* The ionic strength, the measure of the concentration of ions in the solution, can be set up by means of parameter `ionic_strength` and it is measured in `mol/L`. 
-* The temperature `T` is assumed to be equal to the environmental temperature 298,15 K.
+### Dielectric Environment
+
+Set the dielectric constants for both the solute (molecule) and solvent (usually water). These values affect how the electric field propagates through different regions.
+
+| Parameter           | Description                          | Values       | Default         |
+|---------------------|--------------------------------------|--------------|-----------------|
+| `molecular_dielectric_constant`      | Dielectric constant inside the molecule     | real numbers | `2`          |
+| `solvent_dielectric_constant`      | Dielectric constant of the solvent      | real numbers | `80`           |
+
+### Dielectric Environment
+
+Set the dielectric constants for both the solute (molecule) and solvent (usually water). These values affect how the electric field propagates through different regions.
+
+| Parameter           | Description                          | Units       | Default         |
+|---------------------|--------------------------------------|--------------|-----------------|
+| `ionic_strength`      | Concentration of ions in the solvent     | mol/L | `0.145`          |
+| `T`      | Temperature of the system      | Kelvin | `298.15`           |
 
 
-### Energy Options:
-It is also possible to choice which kind of energy to calculate depending on specific interests and purposes. This can be performed by suitablly setting parameter `calc_energy`:
+
+### Energy Calculation Options
+
+Choose what type of energy the solver should compute based on your goals (e.g. estimating solvation effects, computing binding energies, etc.).
+
+| Parameter           | Description                          | Values       | Default         |
+|---------------------|--------------------------------------|--------------|-----------------|
+| `calc_energy`      | Energy to calculate     | `0`, `1`, `2`     | `2`   |
+| `calc_coulombic`      | Whether to compute Coulombic energy (1 = yes)      | `0`, `1`     | `0`   |
+
+#### Available Options for `calc_energy`:
 
 | Values |  Description                                       |
 |--------|--------------------------------------------------- |
@@ -236,16 +274,53 @@ It is also possible to choice which kind of energy to calculate depending on spe
 |   `1`  | Calculates the polaritazion energy                 |
 |   `2`  | Calculates polarization and ionic solvation energy |
 
-While through `calc_coulombic` set to 1 is is possible to neglect the calculation of the Coulombic energy.
 
-**Example**: Output Control
 
-```ini
-atoms_write   = 0       # Write potential at atom centers
-map_type      = vtu     # Format for visualization (vtu for ParaView)
-potential_map = 0       # Export potential map
-surf_write    = 0       # Export surface potential
-```
+
+
+
+### Output Options (What gets saved after the simulation)
+
+These parameters allow you to customize which data is written to disk and how it is formatted.
+
+#### Available Parameters
+
+| Parameter       | Description                                                                 | Values                 | Default |
+|-----------------|-----------------------------------------------------------------------------|------------------------|---------|
+| `atoms_write`   | Write electrostatic potential at atomic positions (e.g., atom centers)      | `0` = no<br>`1` = yes  | `0`     |
+| `map_type`      | File format for exporting potential maps or fields                          | `vtu`, `vtk`, etc.     | `vtu`   |
+| `potential_map` | Export a 3D potential map over the entire computational grid                | `0` = no<br>`1` = yes  | `0`     |
+| `surf_write`    | Export potential on the molecular surface (e.g., SES or SAS)                | `0` = no<br>`1` = yes  | `0`     |
+
+---
+
+#### 📘 Detailed Descriptions
+
+##### `atoms_write = 1`
+Writes the electrostatic potential at each atomic center (e.g., where the atoms' charges are located).  
+Useful for:
+- Analyzing energy contributions at specific atoms
+- Comparing potentials across charged and polar residues
+- Visual inspection of potential at reactive sites
+
+##### `map_type = vtu`
+Sets the output format for the volumetric and surface data:
+- `vtu`: XML-based VTK format (recommended, readable by ParaView and VTK)
+- `vtk`: Legacy format, still compatible with many tools
+
+##### `potential_map = 1`
+Exports a volumetric scalar field of the electrostatic potential across the mesh.  
+Useful for:
+- Visualizing potential gradients in space
+- Detecting electrostatic "hot spots"
+- Quantitative field analysis in 3D
+
+##### `surf_write = 1`
+Exports potential sampled on the molecular surface (e.g., solvent-excluded surface, SES).  
+Useful for:
+- Identifying surface charge patches
+- Guiding docking or drug design
+- Comparing surface potential across different conformations
 
 **Example**: setting the electrostatic options:
 
@@ -260,11 +335,20 @@ T = 298.15                              # Temperature in Kelvin
 
 calc_energy = 2                         # To calculate polarization and ionic solvation energy
 calc_coulombic = 1                      # No calculation of Coulombic energy
+
+atoms_write   = 1       # Write potential at atom centers
+map_type      = vtu     # Format: VTU (compatible with ParaView)
+potential_map = 1       # Export full volumetric potential map
+surf_write    = 1       # Export potential on the molecular surface
 ```
 
 ## 4️⃣ Surface Definition 
 
-Here one finds the definition of how the boundary between solute and solvent is generated using NanoShaper, a tool aimed at computing the molecular surface and pockets of a biomolecular system.
+This section defines **how the boundary between solute and solvent** is generated using [**NanoShaper**](https://gitlab.iit.it/SDecherchi/nanoshaper/), a tool for computing molecular surfaces and identifying cavities or pockets.
+
+The molecular surface plays a critical role in determining how the dielectric constant changes across space and where electrostatic discontinuities occur, which directly impacts the accuracy of the Poisson–Boltzmann solver.
+
+---
 
 ### Surface Types:
 Dielectric boundaries are defined by means of surface types that can be specifically selected through a parameter `surface_type` that can assume three different values as follows:
