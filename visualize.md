@@ -1,3 +1,9 @@
+---
+layout: default
+title: Ouputs
+nav_order: 5
+---
+
 # 📊 Visualizing Results with ParaView
 
 Once the `.vtk` file is generated, you can view it using **ParaView**.

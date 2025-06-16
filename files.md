@@ -10,37 +10,47 @@ This guide explains the required and optional input files for running electrosta
 
 ---
 
-## ✅ Protein Structure Files
+## ✅ Molecular Structure Files
 
 ### PQR Files (Recommended)
-`*.pqr` files contain atomic coordinates, partial charges, and radii. They are ideal for electrostatics simulations because they include all required per-atom physical data in a single file.
+
+Files with `.pqr` extension contain:
+- Atomic coordinates  
+- Partial charges  
+- Atomic radii 
 
 ### PDB Files
-`*.pdb` (Protein Data Bank) files contain atomic positions and residue information but **do not include charges or radii**, which are necessary for electrostatics calculations. If you use `.pdb` files, you must supply:
-- A radius file (`.siz`)
-- A charge file (`.crg`)
 
-<!-- 💡 **Tip:** : Convert `.pdb` to `.pqr` using tools like **PDB2PQR** to simplify simulation setup. -->
+Files with `.pdb` extension contain atomic coordinates and residue information **but lack charges and radii**. When using `.pdb` files, you must also provide:
+- A **radius file** (`.siz`)
+- A **charge file** (`.crg`)
+
+💡 *Tip: Use tools like `PDB2PQR` to convert `.pdb` to `.pqr` for easier setup.*
 
 ---
 
 ## ✅ Configuration Files — `options.prm`
 
-The `options.prm` file defines all simulation settings, including the molecular input, mesh generation, physical parameters, and solver configuration.
-
-Use this section to help you **write or modify your `.pot` files** for specific use cases.
-
----
+The main configuration file `options.prm` defines:
+- Molecular structure input
+- Mesh generation settings
+- Physical parameters
+- Solver and output options
 
 ### 📌 General Notes:
 - Prefer `.pqr` files when possible — simpler and self-contained.
 - Ensure relative paths in `options.prm` are correct with respect to where you run the program.
+- An example of parameter file with all options described is [here](https://github.com/vdiflorio/NextGenPB/tree/main/data).
 
 ---
 
-## 1. Input Settings
 
-These settings specify how molecular structure files are loaded and interpreted.
+
+---
+
+## 1️⃣ Molecular Input Settings
+
+This section defines how the molecular structure is loaded and interpreted.
 
 | Parameter      | Description                                         | Values               | Default         |
 |----------------|-----------------------------------------------------|-----------------------|-----------------|
@@ -51,9 +61,9 @@ These settings specify how molecular structure files are loaded and interpreted.
 | `write_pqr`    | Whether to write a processed `.pqr` file            | `0`, `1`              | `0` (disabled)  |
 | `name_pqr`     | Name of the output `.pqr` file                      | string                | `output.pqr`    |
 
-**Example**: add the following section to `options.prm`:
+**Example block** in `options.prm`:
 
-```bash
+```ini
 [input]
 filetype = pqr
 filename = path/to/structure.pqr
@@ -64,11 +74,11 @@ name_pqr = output.pqr
 [../]
 ```
 
-## 2. Mesh Settings
+## 2️⃣ Mesh Generation Settings
 
-This section defines how the computational grid (mesh) is generated around the biomolecule. The mesh influences accuracy, performance, and how physical properties are computed.
+Defines how the computational grid (mesh) is generated around the biomolecule. The mesh influences accuracy, performance, and how physical properties are computed.
 
-### Mesh Type Selection
+### Mesh Type (mesh_shape)
 
 The shape and structure of the computational grid are controlled using the `mesh_shape` parameter:
 
@@ -158,9 +168,9 @@ You can locally refine a portion of the domain by enabling refine_box. This is h
 
 
 
-**Example**: Configuration in .prm File
+**Example block** in `options.prm`:
 
-```bash
+```ini
 [mesh]
 # Mesh type: 0=derefined, 1=uniform, 2=manual box, 3=focused
 mesh_shape = 0
@@ -196,7 +206,7 @@ outrefine_z2 =  4.0
 [../]
 ```
 
-## 3. Electrostatics Model 
+## 3️⃣ Electrostatics Model Settings
 
 This section is devoted to the physical model, e.g. the linearized Poisson-Boltzmann equation, through the definition of the boundary conditions, the dielectric environment, as well as the choice of various energy calculations.
 
@@ -230,7 +240,7 @@ While through `calc_coulombic` set to 1 is is possible to neglect the calculatio
 
 **Example**: Output Control
 
-```bash
+```ini
 atoms_write   = 0       # Write potential at atom centers
 map_type      = vtu     # Format for visualization (vtu for ParaView)
 potential_map = 0       # Export potential map
@@ -239,7 +249,7 @@ surf_write    = 0       # Export surface potential
 
 **Example**: setting the electrostatic options:
 
-```bash
+```ini
 linearized = 1                          # Linearized Poisson–Boltzmann equation
 bc_type = 1                             # Boundary conditions set to Dirichlet (fixed potential)
 
@@ -252,7 +262,7 @@ calc_energy = 2                         # To calculate polarization and ionic so
 calc_coulombic = 1                      # No calculation of Coulombic energy
 ```
 
-## 4. Surface Definition 
+## 4️⃣ Surface Definition 
 
 Here one finds the definition of how the boundary between solute and solvent is generated using NanoShaper, a tool aimed at computing the molecular surface and pockets of a biomolecular system.
 
@@ -285,7 +295,7 @@ stern_layer_thickness = 2.0   # Thickness of Stern layer (in Å)
 number_of_threads = 1         # Number of CPU threads for NanoShaper
 ```
 
-## 5. Solver and Algorithm 
+## 5️⃣ Solver and Algorithm 
 
 In this last section, one may want to personalize the solver and various options like the solver type, the preconditioner and the tolerance.
 
@@ -315,16 +325,7 @@ One may use the SSOR preconditioning with CGS solver and selecting a strict tole
 solver_options = -p\ ssor\ -ssor_omega\ 0.51\ -i\ cgs\ -tol\ 1.e-6\ -print\ 2\ -conv_cond\ 2\ -tol_w\ 0
 ```
 
-## 6. New Developments
-
-1. Nonlinear ionic density, going beyond the classical low-potential approximation. This linearization neglects important physical effects in systems with high surface charge, multivalent ions, or non-dilute ionic concentrations.
-2. Allow more flexible formats for `.pqr` files (particularly with or without the ChainID column) or the use of `.pdb` files
 
 
-## Troubleshooting
-
-* Ensure file paths are correct relative to the `.pot` file.
-* Use `.pqr` to avoid needing separate radius/charge files.
-* Double-check that `mesh_shape` settings are consistent with grid parameters.
 
 
