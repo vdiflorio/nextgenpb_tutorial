@@ -21,6 +21,6 @@ include:
 just_the_docs:
   aux_links:
     "GitHub":
-      - "//github.com/tuo-username/nextgenpb-tutorial"
+      - "//github.com/vdiflorio/nextgenpb-tutorial"
   custom_css:
     - "assets/css/custom.css"
