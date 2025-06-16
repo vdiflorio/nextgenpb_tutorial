@@ -1,13 +1,13 @@
-/* Aumenta la dimensione del testo base */
+/* Aumenta dimensione font */
 body {
-  font-size: 18px;  /* Cambia a tuo piacimento */
+  font-size: 18px;
 }
 
-/* Cambia il colore principale in blu */
+/* Colori blu personalizzati */
 :root {
-  --color-primary: #007acc;      /* blu principale */
-  --color-primary-dark: #005f99; /* blu scuro */
-  --color-primary-light: #3399ff; /* blu chiaro */
+  --color-primary: #007acc;
+  --color-primary-dark: #005f99;
+  --color-primary-light: #3399ff;
 }
 
 /* Link */
@@ -15,13 +15,13 @@ a {
   color: var(--color-primary);
 }
 
-/* Menu di navigazione */
-nav a {
+/* Menu navigazione */
+.nav-list .nav-list-item .nav-list-link {
   color: var(--color-primary-dark);
 }
 
 /* Footer */
-footer {
+.site-footer {
   background-color: var(--color-primary-light);
   color: white;
 }
