@@ -1,27 +1,26 @@
-/* Aumenta dimensione font */
-body {
-  font-size: 18px;
+/* Cambia colore del titolo principale */
+.site-title {
+  color: #d63384; /* rosa acceso */
 }
 
-/* Colori blu personalizzati */
-:root {
-  --color-primary: #007acc;
-  --color-primary-dark: #005f99;
-  --color-primary-light: #3399ff;
+/* Cambia il colore dei link nel menu laterale */
+.nav-list a {
+  color: #1d3557 !important; /* blu scuro */
 }
 
-/* Link */
-a {
-  color: var(--color-primary);
+/* Evidenzia il bordo sinistro della pagina */
+.main-content {
+  border-left: 5px solid #f77f00;
+  padding-left: 1rem;
 }
 
-/* Menu navigazione */
-.nav-list .nav-list-item .nav-list-link {
-  color: var(--color-primary-dark);
+/* Cambia lo sfondo del menu laterale */
+.side-bar {
+  background-color: #f1faee;
 }
 
-/* Footer */
-.site-footer {
-  background-color: var(--color-primary-light);
-  color: white;
+/* Aggiunge uno stile ai titoli h2 */
+h2 {
+  border-bottom: 2px dashed #d62828;
+  padding-bottom: 0.2em;
 }
