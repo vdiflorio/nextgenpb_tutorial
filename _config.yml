@@ -12,3 +12,8 @@ nav_sort: case_insensitive
 markdown: kramdown
 kramdown:
   input: GFM
+
+# Inserisci il CSS personalizzato
+
+include:
+  - custom.css
