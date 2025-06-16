@@ -15,5 +15,5 @@ kramdown:
 
 # Inserisci il CSS personalizzato
 
-extra_css:
+include:
   - assets/css/custom.css
