@@ -52,6 +52,13 @@ exclude:
   # theme test code
   - fixtures/
 
+# Aux links for the upper right navigation
+aux_links:
+  "NextGenPB on GitHub":
+    - "https://github.com/concept-lab/NextGenPB"
+  "NextGenPB development":
+    - "https://github.com/vdiflorio/NextGenPB"
+
 
 # # Enable or disable the site search
 # # Supports true (default) or false
