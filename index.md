@@ -17,9 +17,6 @@ Created for students and bioinformaticians.
 [View it on GitHub][Just the Docs repo]{: .btn .fs-5 .mb-4 .mb-md-0 }
 [Devel directory][Just the Docs repo devel]{: .btn .fs-5 .mb-4 .mb-md-0 }
 
-[View it on GitHub][https://github.com/concept-lab/NextGenPB]{: .btn .fs-5 .mb-4 .mb-md-0 }
-[Devel directory][https://github.com/vdiflorio/NextGenPB]{: .btn .fs-5 .mb-4 .mb-md-0 }
-
 ---
 
 ## Quick Introduction
