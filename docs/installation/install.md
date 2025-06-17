@@ -1,16 +1,9 @@
 ---
-layout: default
-title: Installation
-nav_order: 2
+title: Container
+parent: Installation
+nav_order: 1
 ---
 
-# 🛠️ Installation Guide for NextGenPB
-
-
-Welcome to the installation guide for **NextGenPB**, a powerful tool for electrostatic simulations using advanced finite element techniques. 
-This guide will walk you through the entire setup, whether you're using **macOS**, **Linux**, or **containerized environments** like Docker or Apptainer.
-
----
 
 ## 📦 Dependencies
 
