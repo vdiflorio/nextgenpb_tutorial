@@ -6,7 +6,7 @@ description: "Just the Docs is a responsive Jekyll theme with built-in search th
 permalink: /
 ---
 
-# Focus on writing good documentation
+# NextGenPB Tutorial
 {: .fs-9 }
 
 Welcome to the **NextGenPB** tutorial! This guide walks you through calculating electrostatic potentials from a biomolecular structure using the Poisson–Boltzmann equation.  
