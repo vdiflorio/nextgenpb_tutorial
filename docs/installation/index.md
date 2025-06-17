@@ -3,14 +3,7 @@ title: Installation
 nav_order: 2
 ---
 
-# Navigation
+# Installation
 
-The default page layout supports various navigation features:
-
-* a **main navigation** panel, highlighting the currently selected page;
-* a list of **auxiliary** links, shown on all pages;
-* lists of **breadcrumbs**, shown on all except top level pages;
-* optional lists of links to **child pages** (so-called 'tables of contents'); and
-* section heading links for **in-page navigation**, with an optional **back-to-top** link.
-
-See the following pages for how to specify these features, with illustrative examples.
+Welcome to the installation guide for **NextGenPB**, a powerful tool for electrostatic simulations using advanced finite element techniques. 
+This guide will walk you through the entire setup, whether you're using **macOS**, **Linux**, or **containerized environments** like Docker or Apptainer.
