@@ -1,6 +1,6 @@
 title: "NextGenPB Tutorial"
 description: "A beginner-friendly guide to running and visualizing Poisson–Boltzmann simulations with NextGenPB."
-remote_theme: just-the-docs/just-the-docs
+remote_theme: tomjoht/documentation-theme-jekyll
 
 color_scheme: light
 search_enabled: true
