@@ -9,13 +9,36 @@ permalink: /
 # Focus on writing good documentation
 {: .fs-9 }
 
-Just the Docs gives your documentation a jumpstart with a responsive Jekyll theme that is easily customizable and hosted on GitHub Pages.
+Welcome to the **NextGenPB** tutorial! This guide walks you through calculating electrostatic potentials from a biomolecular structure using the Poisson–Boltzmann equation.  
+Created for students and bioinformaticians.
 {: .fs-6 .fw-300 }
 
 [Get started now](#getting-started){: .btn .btn-primary .fs-5 .mb-4 .mb-md-0 .mr-2 }
-[View it on GitHub][NextGenPB on GitHub]{: .btn .fs-5 .mb-4 .mb-md-0 }
+[View it on GitHub][https://github.com/concept-lab/NextGenPB]{: .btn .fs-5 .mb-4 .mb-md-0 }
+[Devel directory][https://github.com/vdiflorio/NextGenPB]{: .btn .fs-5 .mb-4 .mb-md-0 }
+
+---
+
+## Quick Introduction
+
+**NextGenPB** is a modern, high-performance tool for solving the Poisson–Boltzmann equation (PBE), a fundamental equation in computational electrostatics.
+
+This tutorial will guide you through the complete process — from setting up your molecular data to visualizing electrostatic potentials.
+
+Whether you're a student just getting started or a researcher interested in bioelectrostatics, you'll find practical steps and explanations to support your learning.
 
 
+## Table of Contents
+
+- [Install the Solver](install.md)
+- [Run the Solver](run.md)
+- [Input Files](files.md)
+- [Outputs & Visualize Results](visualize.md)
+
+
+
+
+➡️ Begin with [Install the Solver](install.md) -->
 
 
 
