@@ -1,7 +1,9 @@
 ---
-layout: default
-title: Home
+title: NextGenPB Tutorial
+layout: home
 nav_order: 1
+description: ""
+permalink: /
 ---
 
 # NextGenPB – Electrostatics Tutorial
