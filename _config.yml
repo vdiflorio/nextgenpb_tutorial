@@ -12,6 +12,16 @@ nav_sort: case_insensitive
 markdown: kramdown
 kramdown:
   input: GFM
+
+permalink: pretty
+
+defaults:
+  - scope:
+      path: "docs" # an empty string here means all files in the project
+      type: "pages"
+    values:
+      layout: "default"
+      
 # # Welcome to Jekyll!
 # #
 # # This config file is meant for settings that affect your whole site, values
