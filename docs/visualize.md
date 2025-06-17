@@ -1,5 +1,4 @@
 ---
-layout: default
 title: Outputs
 nav_order: 5
 ---
