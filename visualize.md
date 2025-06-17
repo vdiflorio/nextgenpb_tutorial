@@ -143,24 +143,52 @@ linear solver status  : normal end
 
 ##  Output Files
 
-After the simulation completes, NextGenPB will generate one or more of the following files depending on the [input options](files.md):
-- `.vtu`: 3D potential field for visualization
+After running a simulation with NextGenPB, the program generates several output files depending on the chosen [input options](files.md).
+These files contain the results of the electrostatic calculations and are useful for visualization and analysis.
+
+### Generated Files
+ - `.vtu`:  One file per MPI rank containing the dielectric map and electrostatic potential.
+ - `.pvtu`: A parallel VTK file that references all `.vtu` files. Use this to load the complete data in ParaView.
+ - `phi_surf.txt`: Contains coordinates of surface vertices and the electrostatic potential values at those points.
+ - `phi_nodes.txt`: Contains coordinates of boundary nodes and the electrostatic potential at each node.
 
 
-### 🧭 Visualizing in ParaView
+### Visualizing with ParaView
 
 1. Open **ParaView**
-2. Go to `File > Open`, select the `.vtk` file
+2. Go to `File > Open`, select the `.pvtk` file
 3. Click **Apply** in the **Properties** panel
 4. In the top bar, choose **Color By** → `Potential`
-5. Add filters to explore the data:
-   - `Slice` to inspect cross sections
-   - `Contour` for isopotential surfaces
-   - `Volume` to view the full 3D field
+
+You should now see a colored map of the electrostatic potential.
+
+
+### Visualizing on VMD, PyMOL, or ChimeraX
+
+You cannot directly use .vtu or .pvtu files in VMD, PyMOL, or ChimeraX.
+
+To visualize the electrostatic potential on the molecular surface with these tools, follow these steps:
+
+#### Convert to CUBE Format
+
+Use the provided Python script [`vtu2cube.py`](https://github.com/vdiflorio/NextGenPB/tree/main/scripts) located in the scripts/ directory of the NextGenPB repository.
+
+```bash
+python path_to_ngpb_dir/scritps/vtu2cube.py <pqr_name> --scale <grid_scale>
+```
+
+- `<pqr_name>`: Base name of your .pqr input file.
+-`--scale`: (Optional) Controls the resolution of the grid. Default is 2.
+
+This will generate a CUBE file `pqr_name.cube`.
+
+You can now load the .cube file into VMD, PyMOL, or ChimeraX to visualize the electrostatic potential mapped onto the molecular surface.
+
+> **Example**:
+>```bash
+> python ~/NextGenPB/scripts/vtu2cube.py 6VYB.pqr --scale 3
+>```
+>This will produce `6VYB.cube`
 
 ---
-### 🖼️ Example Visualization
-
-You can overlay the molecular structure (e.g., from a `.pdb` file) with the potential field to inspect electrostatic interactions in detail.
-
 ➡️ [Back to Run Instructions](run.md) | [Return to Tutorial Home](index.md)
