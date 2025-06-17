@@ -5,6 +5,7 @@ nav_order: 2
 ---
 
 This is the easiest way to get **NextGenPB** running on your computer.
+{: .fs-6 .fw-300 }
 
 
 # 🚀 Quick Start Options
