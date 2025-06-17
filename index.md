@@ -10,7 +10,6 @@ permalink: /
 {: .fs-9 }
 
 Welcome to the **NextGenPB** tutorial! This guide walks you through calculating electrostatic potentials from a biomolecular structure using the Poisson–Boltzmann equation.  
-Created for students and bioinformaticians.
 {: .fs-6 .fw-300 }
 
 [Get started now](#Quick-Introduction){: .btn .btn-primary .fs-5 .mb-4 .mb-md-0 .mr-2 }
