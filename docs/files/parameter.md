@@ -1,32 +1,7 @@
----
-layout: default
-title: Input Files
-nav_order: 4
----
-
-# 📁 Input Files Guide
-
-This guide explains the required and optional input files for running electrostatic simulations with **NextGenPB**, particularly those governed by the Poisson–Boltzmann equation (PBE).
-
----
-
-## ✅ Molecular Structure Files
-
-### PQR Files (Recommended)
-
-Files with `.pqr` extension contain:
-- Atomic coordinates  
-- Partial charges  
-- Atomic radii 
-
-### PDB Files
-
-Files with `.pdb` extension contain atomic coordinates and residue information **but lack charges and radii**. When using `.pdb` files, you must also provide:
-- A **radius file** (`.siz`)
-- A **charge file** (`.crg`)
-
->💡 **Tip:** Use tools like `PDB2PQR` to convert `.pdb` to `.pqr` for easier setup.
-
+--- 
+title: Parameter files
+parent: Input Files
+nav_order: 2
 ---
 
 ## ✅ Configuration Files — `options.prm`
