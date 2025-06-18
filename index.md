@@ -27,17 +27,17 @@ This tutorial will guide you through the complete process — from setting up yo
 Whether you're a student just getting started or a researcher interested in bioelectrostatics, you'll find practical steps and explanations to support your learning.
 
 
-## Table of Contents
+<!-- ## Table of Contents
 
 - [Install the Solver](install.md)
 - [Run the Solver](run.md)
 - [Input Files](files.md)
-- [Outputs & Visualize Results](visualize.md)
+- [Outputs & Visualize Results](visualize.md) -->
 
 
 
 
-➡️ Begin with [Install the Solver](installation/index.md) -->
+➡️ Begin with [Install the Solver](/docs/installation/index.md) -->
 
 [Just the Docs repo]: https://github.com/concept-lab/NextGenPB
 [Just the Docs repo devel]: https://github.com/vdiflorio/NextGenPB
