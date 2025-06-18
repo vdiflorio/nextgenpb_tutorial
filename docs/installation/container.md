@@ -8,7 +8,7 @@ This is the easiest way to get **NextGenPB** running on your computer.
 {: .fs-6 .fw-300 }
 
 
-# 🚀 Quick Start Options
+# Quick Start Options
 
 ##  🏃 Very Impatient? Use a Precompiled Apptainer Image
 
@@ -26,7 +26,7 @@ If you're eager to run simulations without compiling anything, use the ready-mad
 wget ....
 ```
 
-➡️ Go to [Running NextGenPB](run.md) for execution details using the container.
+➡️ Go to [Running NextGenPB](docs/run/index.md) for execution details using the container.
 
 
 ## 🚶‍♂️ Prefer Customization? Build the Docker or Apptainer Image Yourself

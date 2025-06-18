@@ -14,7 +14,7 @@ Welcome to the **NextGenPB** tutorial! This guide walks you through calculating 
 
 [Get started now](#quick-introduction){: .btn .btn-primary .fs-5 .mb-4 .mb-md-0 .mr-2 }
 [View it on GitHub][Just the Docs repo]{: .btn .fs-5 .mb-4 .mb-md-0 }
-[Devel directory][Just the Docs repo devel]{: .btn .fs-5 .mb-4 .mb-md-0 }
+<!-- [Devel directory][Just the Docs repo devel]{: .btn .fs-5 .mb-4 .mb-md-0 } -->
 
 ---
 
