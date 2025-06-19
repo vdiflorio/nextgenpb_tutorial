@@ -22,11 +22,11 @@ export FCFLAGS="-O3 -mtune=native -march=native"
 
 Make sure all dependencies (`mumps`, `lis`, `p4est`, `bim++`) are compiled with the same compiler and flags to avoid incompatibility or runtime errors.
 
-Then follow the same steps described in the [**macOS build**](/docs/installation/mac.md) section.
+Then follow the same steps described in the [**macOS build**](mac) section.
 
 ---
 
 ✅ You’re now ready to run simulations with **NextGenPB**!
 
-➡️ Go to [running section](/docs/run/index.md) to learn out to run the solver.
+➡️ Go to [running section](/nextgenpb_tutorial/docs/run/) to learn out to run the solver.
 
