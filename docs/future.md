@@ -2,6 +2,7 @@
 layout: default
 title: Future ideas
 nav_order: 6
+nav_enabled: true
 ---
 
 

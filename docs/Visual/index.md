@@ -1,6 +1,7 @@
 ---
 title: Outputs
 nav_order: 5
+nav_enabled: true
 ---
 
 # 📁 Output Files and Log Interpretation
