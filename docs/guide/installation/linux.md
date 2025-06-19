@@ -28,5 +28,5 @@ Then follow the same steps described in the [**macOS build**](mac) section.
 
 ✅ You’re now ready to run simulations with **NextGenPB**!
 
-➡️ Go to [running section](/nextgenpb_tutorial/docs/run/) to learn out to run the solver.
+Go to [running section](/nextgenpb_tutorial/docs/guide/run/) to learn out to run the solver.
 

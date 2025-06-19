@@ -26,6 +26,6 @@ mpirun -np <number_of_processors> ngpb --prmfile options.prm --pqrfile molecule.
 ```
 
 {: .note }
-Details about the structure and purpose of `.prm`, `.pqr`, and `.pdb` files are provided in the [Input Files guide](/nextgenpb_tutorial/docs/files).
+Details about the structure and purpose of `.prm`, `.pqr`, and `.pdb` files are provided in the [Input Files guide](/nextgenpb_tutorial/docs/guide/files).
 
 ---

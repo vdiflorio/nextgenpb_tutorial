@@ -68,6 +68,6 @@ mpirun -np 4 ngpb --potfile options.prm --pqrfile molecule.pqr
 ```
 
 ---
-⬅️ Return to the [Installation Guide](/nextgenpb_tutorial/docs/installation/container) if you haven’t installed the solver yet.
+⬅️ Return to the [Installation Guide](/nextgenpb_tutorial/docs/guide/installation/container) if you haven’t installed the solver yet.
 
-➡️ Go to [input files](/nextgenpb_tutorial/docs/files/files) to learn everything about `.prm`, `.pot`, `.pqr`, and other input formats.
+➡️ Go to [input files](/nextgenpb_tutorial/docs/guide/files/files) to learn everything about `.prm`, `.pot`, `.pqr`, and other input formats.
