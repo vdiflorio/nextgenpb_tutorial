@@ -42,7 +42,7 @@ Whether you're a student just getting started or a researcher interested in bioe
 
 ---
 
-➡️ Begin with [Install the Solver]({% link docs/installation/index.md %}) -->
+➡️ Begin with [Install the Solver](/docs/installation/index.md) -->
 
 [Just the Docs repo]: https://github.com/concept-lab/NextGenPB
 [Just the Docs repo devel]: https://github.com/vdiflorio/NextGenPB
