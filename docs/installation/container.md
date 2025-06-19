@@ -53,7 +53,7 @@ To run the Apptainer image:
 ```bash
  apptainer exec --pwd /App --bind /path/to/files/:/App  /path/to/sif/NextGenPB_ompi4.sif mpirun -np <number_of_processors> ngpb --prmfile options.prm
 ```
-➡️ See the [Running NextGenPB](/nextgenpb_tutorial/docs/run/container.md) guide for execution details using the container.
+➡️ See the [Running NextGenPB](/nextgenpb_tutorial/docs/run/container) guide for execution details using the container.
 
 
 ### Customize compiling flags to performance
