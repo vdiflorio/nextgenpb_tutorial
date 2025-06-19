@@ -2,7 +2,6 @@
 title: Run
 nav_order: 3
 nav_enabled: true
-permalink: /
 ---
 
 # ⚙️ Running the NextGenPB Solver
