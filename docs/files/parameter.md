@@ -1,5 +1,5 @@
 --- 
-title: Parameter files
+title: Parameter Files
 parent: Input Files
 nav_order: 2
 ---
@@ -400,7 +400,8 @@ number_of_threads = 1          # Run NanoShaper using 1 CPU thread
 
 This section configures the **linear solver** and associated options used in solving the discretized Poisson–Boltzmann equation. You can customize the **solver type**, **preconditioner**, **tolerance criteria**, and **verbosity**.
 
-> ** ⚠️ Warning: ** This part is just for advanced users!
+{: .warning }
+>  ⚠️  This part is just for advanced users!
 
 
 
@@ -410,10 +411,11 @@ Two main solver backends are available:
 
 | Backend Value       | Description                                                  | Use Case                    |
 |---------------------|--------------------------------------------------------------|-----------------------------|
-| `'mumps'`           | **Direct solver**, memory-intensive but robust               | Small to medium problems    |
-| `'lis'`             | **Iterative solver**, scalable and efficient (Default)               | Recommended for large grids |
+| `mumps`           | **Direct solver**, memory-intensive but robust               | Small to medium problems    |
+| `lis`             | **Iterative solver**, scalable and efficient (Default)               | Recommended for large grids |
 
-> **Note**: For large biomolecular systems, `lis` is generally preferred due to its lower memory consumption and greater flexibility.
+{: .note }
+For large biomolecular systems, `lis` is generally preferred due to its lower memory consumption and greater flexibility.
 
 ---
 
@@ -443,7 +445,8 @@ When using `linear_solver = 'lis'`, additional solver options can be set using a
 - `-tol_w`: Tolerance threshold below which warnings are issued.
 
 
-**Example**:
+## Example
+{: .text-delta }
 
 Below is an example using the **CGS solver** with **SSOR preconditioning**, a tight convergence tolerance, and full verbosity:
 
