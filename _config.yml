@@ -1,6 +1,8 @@
 title: "NextGenPB Tutorial"
 description: "A beginner-friendly guide to running and visualizing Poisson–Boltzmann simulations with NextGenPB."
 remote_theme: just-the-docs/just-the-docs
+url: "https://vdiflorio.github.io/nextgenpb_tutorial/" # the base hostname & protocol for your site, e.g. http://example.com
+repository: vdiflorio/nextgenpb_tutorial # for github-metadata
 
 color_scheme: light
 search_enabled: true
