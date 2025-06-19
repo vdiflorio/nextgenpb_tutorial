@@ -16,6 +16,11 @@ Welcome to the **NextGenPB** tutorial! This guide walks you through calculating 
 [View it on GitHub][Just the Docs repo]{: .btn .fs-5 .mb-4 .mb-md-0 }
 <!-- [Devel directory][Just the Docs repo devel]{: .btn .fs-5 .mb-4 .mb-md-0 } -->
 
+## Table of contents
+{: .no_toc .text-delta }
+
+1. TOC
+{:toc}
 ---
 
 ## Quick Introduction
@@ -26,7 +31,7 @@ This tutorial will guide you through the complete process — from setting up yo
 
 Whether you're a student just getting started or a researcher interested in bioelectrostatics, you'll find practical steps and explanations to support your learning.
 
-
+## Poisson–Boltzmann equation (PBE)
 <!-- ## Table of Contents
 
 - [Install the Solver](install.md)
@@ -35,9 +40,9 @@ Whether you're a student just getting started or a researcher interested in bioe
 - [Outputs & Visualize Results](visualize.md) -->
 
 
+---
 
-
-➡️ Begin with [Install the Solver](/docs/installation/index.md) -->
+➡️ Begin with [Install the Solver]({% link docs/installation/index.md %}) -->
 
 [Just the Docs repo]: https://github.com/concept-lab/NextGenPB
 [Just the Docs repo devel]: https://github.com/vdiflorio/NextGenPB
