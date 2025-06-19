@@ -57,10 +57,22 @@ exclude:
 # Aux links for the upper right navigation
 aux_links:
   "NextGenPB on GitHub":
-    - "https://github.com/concept-lab/NextGenPB"
-  "NextGenPB development":
-    - "https://github.com/vdiflorio/NextGenPB"
+    - "https://github.com/vdiflorio/nextgenpb_tutorial"
 
+
+# Show navigation error report
+nav_error_report: true # default is false/nil.
+
+liquid:
+  error_mode: strict
+  strict_filters: true
+
+# Footer content
+# appears at the bottom of every page's main content
+
+# Back to top link
+back_to_top: true
+back_to_top_text: "Back to top"
 
 # Enable or disable the site search
 # Supports true (default) or false

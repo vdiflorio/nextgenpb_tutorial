@@ -2,6 +2,7 @@
 title: Containers
 parent: Installation
 nav_order: 2
+nav_enabled: true
 ---
 
 This is the easiest way to get **NextGenPB** running on your computer.
