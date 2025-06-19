@@ -40,7 +40,6 @@ exclude:
   # specific to the theme website:
   - bin/
   - lib/
-  - docs/future.md
   - "*.gemspec"
   - "*.gem"
   - LICENSE.txt
