@@ -1,10 +1,9 @@
 ---
 title: Run
 nav_order: 3
-nav_enabled: true
 ---
 
-# ⚙️ Running the NextGenPB Solver
+# Running the NextGenPB Solver
 {: .fs-9 }
 
 Once you’ve installed or containerized **NextGenPB**, you're ready to begin running simulations.  
