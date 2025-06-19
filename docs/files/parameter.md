@@ -64,7 +64,7 @@ The shape and structure of the computational grid are controlled using the `mesh
 |---------------|--------------------------------------|----------------|---------|
 | `mesh_shape`  | Mesh shape configuration             | `0`, `1`, `2`, `3` | `0`     |
 
-### Available Options for `mesh_shape
+### Available Options for `mesh_shape`
 {: .text-delta }
 
 | Value | Description                                                                 |
@@ -118,7 +118,7 @@ These parameters define mesh resolution globally (`unilevel`) or in regions outs
 
 ### Manual Bounding Box (for `mesh_shape = 2`)
 
-If you want full control over the mesh boundaries, define them explicitly:
+If you want full control over the mesh boundaries, define them explicitly. For example:
 
 ```bash
 x1 = -16  
@@ -147,7 +147,8 @@ You can locally refine a portion of the domain by enabling refine_box. This is h
 
 
 
-**Example block** in `options.prm`:
+### Example block in `options.prm`
+{: .text-delta }
 
 ```ini
 [mesh]
@@ -199,9 +200,11 @@ Currently, **only the linearized Poisson–Boltzmann equation** is implemented. 
 |---------------------|--------------------------------------|--------------|-----------------|
 | `linearized`        | Enable linearized PBE (mandatory for now) | `1`     | `1`   |
 
->⚠️ **Note**: The solver only supports the linearized version. Future versions may add support for the full nonlinear PBE.
 
-### Boundary Conditions (bc_type)
+{: .note }
+⚠️  The solver only supports the linearized version. Future versions may add support for the full nonlinear PBE.
+
+### Boundary Conditions (`bc_type`)
 
 You can choose among different boundary conditions to better represent the physical environment of your problem. This affects how the potential behaves at the domain boundaries.
 
@@ -209,7 +212,8 @@ You can choose among different boundary conditions to better represent the physi
 |---------------------|--------------------------------------|--------------|-----------------|
 | `bc_type`        | Type of boundary condition | `0`, `1`, `2`     | `1`   |
 
-#### Available Options for `bc_type`:
+### Available Options for `bc_type`
+{: .text-delta }
 
 | Values |  Boundary condition   |
 |--------|---------------------- |
@@ -247,7 +251,9 @@ Choose what type of energy the solver should compute based on your goals (e.g. e
 | `calc_energy`      | Energy to calculate     | `0`, `1`, `2`     | `2`   |
 | `calc_coulombic`      | Whether to compute Coulombic energy (1 = yes)      | `0` = no, `1`= yes   | `0`   |
 
-#### Available Options for `calc_energy`:
+### Available Options for `calc_energy`
+{: .text-delta }
+
 
 | Values |  Description                                       |
 |--------|--------------------------------------------------- |
@@ -264,7 +270,8 @@ Choose what type of energy the solver should compute based on your goals (e.g. e
 
 These parameters allow you to customize which data is written to disk and how it is formatted.
 
-#### Available Parameters
+### Available Options for `calc_energy`
+{: .text-delta }
 
 | Parameter       | Description                                                                 | Values                 | Default |
 |-----------------|-----------------------------------------------------------------------------|------------------------|---------|
@@ -274,7 +281,7 @@ These parameters allow you to customize which data is written to disk and how it
 | `surf_write`    | Export potential on the molecular surface (e.g., SES or SAS)                | `0` = no`1` = yes  | `0`     |
 
 
-#### 📘 Detailed Descriptions
+#### Detailed Descriptions
 
 ##### `atoms_write = 1`
 Writes the electrostatic potential at each atomic center (e.g., where the atoms' charges are located).  
