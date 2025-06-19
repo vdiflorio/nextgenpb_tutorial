@@ -4,15 +4,17 @@ parent: Input Files
 nav_order: 2
 ---
 
-## ✅ Configuration Files — `options.prm`
+# Configuration Files — `options.prm`
 
 The main configuration file `options.prm` defines:
+
 - Molecular structure input
 - Mesh generation settings
 - Physical parameters
 - Solver and output options
 
 ### 📌 General Notes:
+
 - Prefer `.pqr` files when possible — simpler and self-contained.
 - Ensure relative paths in `options.prm` are correct with respect to where you run the program.
 - An example of parameter file with all options described is [here](https://github.com/vdiflorio/NextGenPB/tree/main/data).
@@ -22,7 +24,7 @@ The main configuration file `options.prm` defines:
 
 ## 1️⃣ Molecular Input Settings
 
-This section defines how the molecular structure is loaded and interpreted.
+Defines how the molecular structure is loaded and interpreted.
 
 | Parameter      | Description                                         | Values               | Default         |
 |----------------|-----------------------------------------------------|-----------------------|-----------------|
@@ -33,7 +35,9 @@ This section defines how the molecular structure is loaded and interpreted.
 | `write_pqr`    | Whether to write a processed `.pqr` file            | `0`, `1`              | `0` (disabled)  |
 | `name_pqr`     | Name of the output `.pqr` file                      | string                | `output.pqr`    |
 
-**Example block** in `options.prm`:
+
+### Example block in `options.prm`
+{: .text-delta }
 
 ```ini
 [input]
@@ -60,8 +64,8 @@ The shape and structure of the computational grid are controlled using the `mesh
 |---------------|--------------------------------------|----------------|---------|
 | `mesh_shape`  | Mesh shape configuration             | `0`, `1`, `2`, `3` | `0`     |
 
-**Available Options for `mesh_shape`:**
-
+### Available Options for `mesh_shape
+{: .text-delta }
 | Value | Description                                                                 |
 |-------|-----------------------------------------------------------------------------|
 | `0`   | **Derefined mesh** – uses different resolutions (`perfil1`, `perfil2`) in coarse and fine regions. |
@@ -222,9 +226,9 @@ Set the dielectric constants for both the solute (molecule) and solvent (usually
 | `molecular_dielectric_constant`      | Dielectric constant inside the molecule     | real numbers | `2`          |
 | `solvent_dielectric_constant`      | Dielectric constant of the solvent      | real numbers | `80`           |
 
-### Dielectric Environment
+### Solvent Properties
 
-Set the dielectric constants for both the solute (molecule) and solvent (usually water). These values affect how the electric field propagates through different regions.
+These parameters define physical conditions of the solvent, including temperature and ionic concentration.
 
 | Parameter           | Description                          | Units       | Default         |
 |---------------------|--------------------------------------|--------------|-----------------|
