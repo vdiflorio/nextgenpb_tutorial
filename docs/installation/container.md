@@ -20,7 +20,7 @@ If you're eager to run simulations without compiling anything, use the ready-mad
   [https://apptainer.org/docs/](https://apptainer.org/docs/)
 
 
-### ⬇️ Download the image
+### Download the image
 
 ```bash
 wget ....
@@ -52,7 +52,7 @@ To run the Apptainer image:
 ```bash
  apptainer exec --pwd /App --bind /path/to/files/:/App  /path/to/sif/NextGenPB_ompi4.sif mpirun -np <number_of_processors> ngpb --prmfile options.prm
 ```
-➡️ See the [Running NextGenPB](run.md) guide for execution details using the container.
+➡️ See the [Running NextGenPB](/docs/run/container.md) guide for execution details using the container.
 
 
 ### Customize compiling flags to performance
@@ -61,4 +61,4 @@ To run the Apptainer image:
 
 ✅ You’re now ready to run simulations with **NextGenPB**!
 
-➡️ Go to [running section](run.md) to learn out to run the solver.
+➡️ Go to [running section](/docs/run/index.md) to learn out to run the solver.

@@ -4,7 +4,7 @@ parent: Installation
 nav_order: 4
 ---
 
-# 🐧 Installing on Rocky Linux or Ubuntu
+# Installing on Rocky Linux or Ubuntu
 
 Use the provided Dockerfiles for a streamlined install:
 - Dockerfile – for Rocky Linux
@@ -22,11 +22,11 @@ export FCFLAGS="-O3 -mtune=native -march=native"
 
 Make sure all dependencies (`mumps`, `lis`, `p4est`, `bim++`) are compiled with the same compiler and flags to avoid incompatibility or runtime errors.
 
-Then follow the same steps described in the **macOS build** section.
+Then follow the same steps described in the [**macOS build**](/docs/installation/mac.md) section.
 
 ---
 
 ✅ You’re now ready to run simulations with **NextGenPB**!
 
-➡️ Go to [running section](run.md) to learn out to run the solver.
+➡️ Go to [running section](/docs/run/index.md) to learn out to run the solver.
 

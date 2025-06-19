@@ -4,11 +4,12 @@ parent: Installation
 nav_order: 3
 ---
 
-# 🍏 Installation on macOS (via MacPorts)
+# Installation on macOS (via MacPorts)
 
 This section will guide you through installing and compiling NextGenPB from source using MacPorts, a package manager for macOS.
 
-💡 **Tip:** Homebrew can be used too.
+{: .note }
+Homebrew can be used too.
 
 ## ✅ Step 1: Install Core Dependencies
 
@@ -132,4 +133,4 @@ source ~/.zshrc
 
 ✅ You’re now ready to run simulations with **NextGenPB**!
 
-➡️ Go to [running section](run.md) to learn out to run the solver.
+➡️ Go to [running section](/docs/run/index.md) to learn out to run the solver.
