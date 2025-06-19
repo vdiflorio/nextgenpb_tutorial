@@ -2,6 +2,7 @@
 title: Installation
 nav_order: 2
 nav_enabled: true
+permalink: /
 ---
 
 # Installation
