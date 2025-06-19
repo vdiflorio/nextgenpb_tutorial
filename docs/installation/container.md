@@ -62,4 +62,4 @@ To run the Apptainer image:
 
 ✅ You’re now ready to run simulations with **NextGenPB**!
 
-➡️ Go to [running section](/docs/run/index.md) to learn out to run the solver.
+➡️ Go to [running section](/nextgenpb_tutorial/docs/run/index.md) to learn out to run the solver.
