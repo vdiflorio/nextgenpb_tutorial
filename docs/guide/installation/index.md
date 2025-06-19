@@ -1,6 +1,7 @@
 ---
 title: Installation
-nav_order: 2
+parent: Guide
+nav_order: 1
 ---
 
 # Installation

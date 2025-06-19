@@ -1,6 +1,7 @@
 ---
 title: Input Files
-nav_order: 4
+parent: Guide
+nav_order: 3
 ---
 
 # Input Files Guide

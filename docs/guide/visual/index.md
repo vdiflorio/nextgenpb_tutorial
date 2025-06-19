@@ -1,6 +1,7 @@
 ---
 title: Outputs
-nav_order: 5
+parent: Guide
+nav_order: 4
 ---
 
 # Output Files and Log Interpretation

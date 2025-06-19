@@ -6,7 +6,7 @@ description: "Just the Docs is a responsive Jekyll theme with built-in search th
 permalink: /
 ---
 
-# NextGenPB Tutorial
+# NextGenPB
 {: .fs-9 }
 
 Welcome to the **NextGenPB** tutorial! This guide walks you through calculating electrostatic potentials from a biomolecular structure using the Poisson–Boltzmann equation.  
@@ -42,7 +42,7 @@ Whether you're a student just getting started or a researcher interested in bioe
 
 ---
 
-➡️ Begin with [Install the Solver](/docs/installation/index.md) -->
+➡️ Begin with [Install the Solver](/docs/guide/installation/index) -->
 
 [Just the Docs repo]: https://github.com/concept-lab/NextGenPB
 [Just the Docs repo devel]: https://github.com/vdiflorio/NextGenPB
