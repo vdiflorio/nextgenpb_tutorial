@@ -5,7 +5,7 @@ nav_order: 2
 ---
 
 
-# 🐳 Running Inside a Docker Container
+# Running Inside a Docker Container
 
 Docker lets you encapsulate the solver and all dependencies inside a container, ensuring consistency and portability across different systems.
 

@@ -5,7 +5,7 @@ nav_order: 1
 ---
 
 
-# 📦 Dependencies
+# Dependencies
 
 NextGenPB depends on a combination of custom libraries, solvers, and visualization tools.
 
