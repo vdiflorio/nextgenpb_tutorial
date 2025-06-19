@@ -66,6 +66,7 @@ The shape and structure of the computational grid are controlled using the `mesh
 
 ### Available Options for `mesh_shape
 {: .text-delta }
+
 | Value | Description                                                                 |
 |-------|-----------------------------------------------------------------------------|
 | `0`   | **Derefined mesh** – uses different resolutions (`perfil1`, `perfil2`) in coarse and fine regions. |
