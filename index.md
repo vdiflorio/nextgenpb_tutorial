@@ -13,14 +13,9 @@ Welcome to the **NextGenPB** tutorial! This guide walks you through calculating 
 {: .fs-6 .fw-300 }
 
 [Get started now](#quick-introduction){: .btn .btn-primary .fs-5 .mb-4 .mb-md-0 .mr-2 }
-[View it on GitHub][Just the Docs repo]{: .btn .fs-5 .mb-4 .mb-md-0 }
+[NextGenPB GitHub][Just the Docs repo]{: .btn .fs-5 .mb-4 .mb-md-0 }
 <!-- [Devel directory][Just the Docs repo devel]{: .btn .fs-5 .mb-4 .mb-md-0 } -->
 
-## Table of contents
-{: .no_toc .text-delta }
-
-1. TOC
-{:toc}
 ---
 
 ## Quick Introduction
