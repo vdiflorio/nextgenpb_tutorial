@@ -16,7 +16,7 @@ This page outlines several research and development directions planned for the N
 
 - Designed for users without local installation or HPC access.
 - Simplifies workflows for non-expert users in biology, chemistry, and nanotechnology.
-- Inspired by the [NanoShaper Web Server](https://www.electrostatics.eu/nanoshaper-webserver) for surface generation, which will be integrated as a backend service for SES computation.
+- Inspired by the [NanoShaper Web Server](https://nanoshaperweb.iit.it/) for surface generation, which will be integrated as a backend service for SES computation.
 
 ---
 

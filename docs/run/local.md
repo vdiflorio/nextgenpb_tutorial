@@ -25,6 +25,6 @@ You can adjust the number of processors to suit your system’s capabilities. Ev
 
 
 ---
-⬅️ Return to the [Installation Guide](/docs/installation/linux.md) if you haven’t installed the solver yet.
+⬅️ Return to the [Installation Guide](/nextgenpb_tutorial/docs/installation/linux) if you haven’t installed the solver yet.
 
-➡️ Go to [input files](files.md) to learn everything about `.prm`, `.pot`, `.pqr`, and other input formats.
+➡️ Go to [input files](/nextgenpb_tutorial/docs/files/files) to learn everything about `.prm`, `.pot`, `.pqr`, and other input formats.
