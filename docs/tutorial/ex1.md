@@ -61,6 +61,22 @@ calc_coulombic = 1
 [../]
 ```
 
+#### What are `perfil1` and `perfil2`?
+
+The perfil parameters control how the mesh adapts to the geometry of the molecule:
+
+- `perfil1` is the ratio between the molecular system size and the edge length of the finest resolution region (core mesh).
+- `perfil2` is the same ratio, but for the outer region where the mesh is coarser.
+
+This means:
+- A higher value of perfil1 leads to finer elements near the molecule.
+- A lower perfil2 defines coarser elements at the domain boundary.
+
+The mesh gradually transitions from the fine region (perfil1) to the coarse one (perfil2), allowing accurate resolution where needed while keeping the overall number of elements manageable.
+
+![Figura 1: Visualizzazione della mesh](/nextgenpb_tutorial/docs/images/image_tutorial.png)
+
+
 ---
 
 ## Step 2 – Run the Solver
@@ -83,11 +99,9 @@ At the end of the execution, you will see a log similar to this:
 This includes the timing report and the electrostatic energy of the system.
 These outputs confirm that NextGenPB is functioning correctly and that your configuration is valid.
 
-### Mesh
 
-with...
 
-![Figura 1: Visualizzazione della mesh](/nextgenpb_tutorial/docs/images/image_tutorial.png)
+
 ---
 
 ➡️ Go to the next [exercise](/nextgenpb_tutorial/docs/tutorial/ex2).
