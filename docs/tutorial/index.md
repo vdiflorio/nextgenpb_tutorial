@@ -18,6 +18,10 @@ If you need a custom-built version (e.g., optimized for specific hardware or tun
 
 If you are a developer (or simply prefer installing the code directly on your system), installation instructions are available for both [macOS](/nextgenpb_tutorial/docs/guide/installation/mac) and [Linux](/nextgenpb_tutorial/docs/guide/installation/linux).
 
+{: .important }
+> If you want to learn more about the input parameters and run options in detail,  
+> please refer to the [Guide](/nextgenpb_tutorial/docs/guide).
+
 ---
 
 ## Minimum Requirements

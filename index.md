@@ -27,9 +27,10 @@ This website contains two main sections to support your learning and use of Next
 
 Whether you're a student just getting started or a researcher interested in bioelectrostatics, you'll find practical steps and in-depth information here.
 
+
 ---
 
-➡️ Begin with [Install the Solver](/nextgenpb_tutorial/docs/guide/installation/)  
+➡️ Begin with the [Guide](/nextgenpb_tutorial/docs/guide/)  
 ➡️ Or jump right into the [Tutorial](/nextgenpb_tutorial/docs/tutorial/)
 
 ---

@@ -36,6 +36,15 @@ mkdir ngpb_tutorial
 cd ngpb_tutorial
 ```
 
+Prepare also the direcotries for the exercise:
+
+```bash
+mkdir ex1
+mkdir ex2
+mkdir ex3
+mkdir ex4
+```
+
 ### Download the container
 
 ```bash
