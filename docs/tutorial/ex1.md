@@ -1,5 +1,5 @@
 ---
-title: Exercise One: First Run
+title: Exercise One
 parent: Tutorial
 nav_order: 2
 ---
