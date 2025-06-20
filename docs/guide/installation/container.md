@@ -27,12 +27,20 @@ If you're eager to run simulations without compiling anything, use the ready-mad
 wget ....
 ```
 
-➡️ Go to [Running NextGenPB](docs/guide/run/index) for execution details using the container.
+➡️ Go to [Running NextGenPB](docs/guide/run/container) for execution details using the container.
 
 
 ## 🚶‍♂️ Prefer Customization? Build the Docker or Apptainer Image Yourself
 
 This option is for advanced users who want to customize compiler flags, link libraries differently, or tweak performance settings.
+
+### Tune the settings
+
+If you are building the image on your machine, you can tune the installation by **uncommenting** the relevant line in `recipe.def` (for Apptainer) or in the `Dockerfile`:
+
+```ini
+# export CFLAGS="-O3 -mtune=native -march=native"
+```
 
 ### Build the Docker image (if root access available)
 
@@ -40,6 +48,7 @@ This option is for advanced users who want to customize compiler flags, link lib
 sudo docker build -f Dockerfile -t <name_of_image>:latest .
 ```
 To run the Docker image:
+
 ```bash
 sudo docker run -v "$(pwd)":/App -w /App <name_of_image>:latest mpirun -np <number_of_processors> ngpb --prmfile options.prm
 ```
@@ -47,12 +56,14 @@ sudo docker run -v "$(pwd)":/App -w /App <name_of_image>:latest mpirun -np <numb
 ### Build the Apptainer image (if root access available)
 
 ```bash
-sudo apptainer build NextGenPB_ompi4.sif recipe.def
+sudo apptainer build NextGenPB.sif recipe.def
 ```
 To run the Apptainer image:
+
 ```bash
- apptainer exec --pwd /App --bind /path/to/files/:/App  /path/to/sif/NextGenPB_ompi4.sif mpirun -np <number_of_processors> ngpb --prmfile options.prm
+ apptainer exec --pwd /App --bind /path/to/files/:/App  /path/to/sif/NextGenPB.sif mpirun -np <number_of_processors> ngpb --prmfile options.prm
 ```
+
 ➡️ See the [Running NextGenPB](/nextgenpb_tutorial/docs/guide/run/container) guide for execution details using the container.
 
 
