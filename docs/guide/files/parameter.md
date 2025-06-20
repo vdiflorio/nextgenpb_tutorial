@@ -347,7 +347,6 @@ The parameter `surface_type` defines the **shape and complexity** of the molecul
 |-------|--------------------------------------|-----------------------------------------------|
 | `0`   | **Solvent Excluded Surface (SES)**   | Default, physically meaningful boundary       |
 | `1`   | **Skin Surface**                     | Smooth representation, better for visuals     |
-| `2`   | **Blobby Surface**                   | Idealized surface with tunable roundness      |
 
 
 
@@ -359,7 +358,7 @@ This parameter controls how the surface is shaped, and its meaning depends on th
 | Surface Type | Meaning of `surface_parameter`                                | Recommended Value |
 |--------------|---------------------------------------------------------------|-------------------|
 | SES (`0`)    | **Probe radius** (in Å) used to roll over the atomic surface   | `1.4` for water   |
-| Skin/Blobby (`1`/`2`) | Controls **smoothness** or **blobbyness** of surface      | `-1.5`            |
+| Skin (`1`) | Controls **smoothness**  of surface      | `0.45`            |
 
 
 ### Stern Layer
