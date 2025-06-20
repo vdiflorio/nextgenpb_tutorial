@@ -7,7 +7,7 @@ nav_order: 2
 # Exercise One: First Run
 
 In this first exercise, we will verify that **NextGenPB** is correctly set up by running a basic electrostatic potential calculation using a real protein input.
-{: .fs-5 }
+{: .fs-6 }
 
 ---
 

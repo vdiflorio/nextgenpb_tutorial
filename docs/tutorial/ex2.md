@@ -7,7 +7,7 @@ nav_order: 3
 # Exercise Two: Use PDB file
 
 In this exercise, we will see how to use `.pdb` files in **NextGenPB**.
-{: .fs-5 }
+{: .fs-6 }
 
 ---
 
