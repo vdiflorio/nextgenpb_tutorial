@@ -31,7 +31,7 @@ cp ../NextGenPB/data/amber.size .
 
 We will prepare multiple parameter files to test different mesh resolutions by varying the scale, the perfil, and by applying random displacement of the mesh center.
 
-{ .note }
+{: .note }
 > A full description of mesh options is available in the [Guide](/nextgenpb_tutorial/docs/guide/files/parameter)
 
 #### Fine Mesh (`fine_mesh.prm`)
@@ -128,4 +128,4 @@ apptainer exec --pwd /App --bind .:/App ../NextGenPB.sif mpirun -np 4 ngpb --prm
 ---
 
 
-➡️ For more information, see the [guide](/nextgenpb_tutorial/docs/guide).
+➡️ For more information, see the [Guide](/nextgenpb_tutorial/docs/guide).

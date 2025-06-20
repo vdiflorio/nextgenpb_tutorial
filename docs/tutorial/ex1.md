@@ -33,7 +33,7 @@ Copy the a `.pqr` file into your current directory:
 cp ../NextGenPB/data/1CCM.pqr .
 ```
 
-### Prepare the Parameter File
+### Create the Parameter File
 
 Create a file named `options.prm` in the current directory with the following content:
 
@@ -83,6 +83,11 @@ At the end of the execution, you will see a log similar to this:
 This includes the timing report and the electrostatic energy of the system.
 These outputs confirm that NextGenPB is functioning correctly and that your configuration is valid.
 
+### Mesh
+
+with...
+
+![Figura 1: Visualizzazione della mesh](/nextgenpb_tutorial/docs/images/image_tutorial.png)
 ---
 
 ➡️ Go to the next [exercise](/nextgenpb_tutorial/docs/tutorial/ex2).
