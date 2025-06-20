@@ -137,9 +137,11 @@ python ../NextGenPB/scritps/vtu2cube.py 1CCM_out.pqr --scale 2
 This will generate a CUBE file `1CCM_out.cube`.
 
 {: .note }
-> In general you can copy the script `vtu2cube.py` in you working directory or add the path:  
+> In general, you can copy the script `vtu2cube.py` into your working directory,  
+> or you can add the script’s directory to your `PATH` so it can be run from anywhere:
+>
 > ```bash
-> export PATH=path_to_ngpb_dir/scripts/:$PATH
+> export PATH=path_to_ngpb_dir/scripts:$PATH
 > ```
 
 You can now load the .cube file into **VMD**, **PyMOL**, or **ChimeraX** to visualize the electrostatic potential mapped onto the molecular surface.
