@@ -80,12 +80,12 @@ The shape and structure of the computational grid are controlled using the `mesh
 These parameters control how the mesh is built, determining both the resolution (i.e., how fine or coarse the mesh is) and whether the center of the mesh should be shifted randomly — useful in stochastic simulations where you might want to slightly vary the mesh to test robustness.
 
 
-| Parameter      | Description                                                | Values          | Default         |
-|----------------|------------------------------------------------------------|-----------------|-----------------|
-| `perfil1`      | Sets the main grid spacing: smaller values create finer meshes | float           | `0.8`           |
-| `perfil2`      | Defines a finer spacing used only in specific refined regions  | float           | `0.2`           |
-| `scale`        | Refinement scale factor (used in `mesh_shape = 0 or 3`)    | float           | `2`             |
-| `rand_center`  | Randomly shift the mesh center (only for shape `0` or `1`) | `0`, `1`        | `0` (disabled)  |
+| Parameter     | Description                                                                 | Type           | Default        |
+|---------------|-----------------------------------------------------------------------------|----------------|----------------|
+| `perfil1`     | Ratio between the molecular size and the grid spacing in the **core region** (fine mesh) | float          | `0.8`          |
+| `perfil2`     | Ratio for the **outer region** mesh spacing; defines coarser elements far from the molecule | float          | `0.2`          |
+| `scale`       | Inverse of the grid size in the core region: `grid_size = 1 / scale` (used with `mesh_shape = 0` or `3`) | float          | `2`            |
+| `rand_center` | If `1`, randomly shifts the center of the domain box (valid for shapes `0` or `1`) | `0`, `1`       | `0` (disabled) |
 
 
 
@@ -155,7 +155,6 @@ You can locally refine a portion of the domain by enabling refine_box. This is h
 # Mesh type: 0=derefined, 1=uniform, 2=manual box, 3=focused
 mesh_shape = 0
 
-# Grid spacing (perfil1 = base, perfil2 = fine zones)
 perfil1 = 0.8
 perfil2 = 0.5
 scale   = 2.0
