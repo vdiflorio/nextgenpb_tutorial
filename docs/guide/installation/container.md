@@ -23,9 +23,15 @@ If you're eager to run simulations without compiling anything, use the ready-mad
 
 ### Download the image
 
+You can download the generic image using the following command:
+
 ```bash
-wget ....
+wget https://github.com/concept-lab/NextGenPB/releases/download/NextGenPB_v1.0.0/NextGenPB.sif
 ```
+
+If you know the architecture of the machine where the container will run, you can download the image built specifically for that architecture.
+See the [Downloads page](https://github.com/concept-lab/NextGenPB/releases/tag/NextGenPB_v1.0.0) for available versions.
+
 
 ➡️ Go to [Running NextGenPB](docs/guide/run/container) for execution details using the container.
 
