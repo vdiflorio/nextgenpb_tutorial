@@ -93,6 +93,18 @@ apptainer exec --pwd /App --bind .:/App ../NextGenPB.sif mpirun -np 4 ngpb --prm
 At the end of the execution, you will see a log similar to this:
 
 ```ini
+================ [ Electrostatic Energy ] =================
+  Net charge [e]:                                 7.327471962526033e-15
+  Flux charge [e]:                                -4.859124220152702e-11
+  Polarization energy [kT]:                       -384.6169807703798
+  Direct ionic energy [kT]:                       -0.2516508616874018
+  Coulombic energy [kT]:                          -10097.24155852403
+  Sum of electrostatic energy contributions [kT]: -10482.11019015609
+===========================================================
+compute energy
+Elapsed time : 141.198ms
+
+Timing Report:
 ...
 ```
 

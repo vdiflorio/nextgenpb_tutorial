@@ -37,8 +37,8 @@ cp ../NextGenPB/data/1CCM.pdb .
 So you must also copy the files that provide this information:
 
 ```bash
-cp ../NextGenPB/data/amber.crg .
-cp ../NextGenPB/data/amber.size .
+cp ../NextGenPB/data/charge.crg .
+cp ../NextGenPB/data/radius.siz .
 ```
 
 ### Prepare the Parameter File
@@ -99,6 +99,24 @@ apptainer exec --pwd /App --bind .:/App ../NextGenPB.sif mpirun -np 4 ngpb --prm
 At the end of the execution, you will see a log similar to this:
 
 ```ini
+================ [ Electrostatic Energy ] =================
+  Net charge [e]:                                 1.000100072473288
+  Flux charge [e]:                                0.9999852578120542
+  Polarization energy [kT]:                       -370.6199322776101
+  Direct ionic energy [kT]:                       -0.3187630925742346
+  Coulombic energy [kT]:                          -10069.09853443279
+  Sum of electrostatic energy contributions [kT]: -10440.03722980297
+===========================================================
+compute energy
+Elapsed time : 140.469ms
+Write potential on the surface
+Elapsed time : 169.288ms
+export potential map new
+Elapsed time : 43.058ms
+export epsilon map new
+Elapsed time : 44.231ms
+File .pvtu create: total_potential_map.pvtu
+File .pvtu create: total_eps_map.pvtu
 ...
 ```
 
@@ -127,6 +145,19 @@ To visualize your electrostatic potential with them, you need to convert the dat
 ####  Use the `vtu2cube.py` script
 
 **NextGenPB** provides a [Python script](https://github.com/concept-lab/NextGenPB/tree/main/scripts) in the `scripts/` directory that converts `.vtu` files into `.cube` format.
+
+{: .important }
+>To run this script you need the python module `vtk`.
+>
+>```bash
+>pip install vtk
+>```
+>
+>or
+>
+>```bash
+>conda install vtk
+>```
 
 Run the following command in your terminal:
 

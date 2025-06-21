@@ -23,8 +23,8 @@ Copy the necessary input files:
 
 ```bash
 cp ../NextGenPB/data/1CCM.pdb .
-cp ../NextGenPB/data/amber.crg .
-cp ../NextGenPB/data/amber.size .
+cp ../NextGenPB/data/charge.crg .
+cp ../NextGenPB/data/radius.siz .
 ```
 
 ### Create Parameter Files

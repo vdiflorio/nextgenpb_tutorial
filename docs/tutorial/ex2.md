@@ -37,9 +37,78 @@ cp ../NextGenPB/data/1CCM.pdb .
 So you must also copy the files that provide this information:
 
 ```bash
-cp ../NextGenPB/data/amber.crg .
-cp ../NextGenPB/data/amber.size .
+cp ../NextGenPB/data/charge.crg .
+cp ../NextGenPB/data/radius.siz .
 ```
+###  Understand the Required Input Files
+
+`.pdb` files contain atom names, coordinates, and connectivity, but **they do not include** atomic charges or van der Waals radii, which are required to compute electrostatic interactions and molecular surfaces.
+
+To provide this missing information, NextGenPB uses two additional files:
+
+#### charge.crg – Partial Charges
+
+This file assigns partial charges to atoms based on their names and residue types.
+Each line typically follows the format:
+
+```ini
+! This file was created from amber98.prm
+!    file from TINKER package
+! The format of this file:
+! Column 1-6: atom name; column 7-9: residue name;
+! column 10-12: residue number; column 14: chain name;
+! column 15-23: charge magnitude. For example:
+atom__resnumbc_charge_
+1H              0.0906 !!! Hydrogen of CA backbone
+2H              0.0906
+3H              0.0906
+
+H1              0.4240 !!! Hydrogen for N-terminal residue
+H2              0.4240 !!!
+H3              0.4240 !!!
+
+N     ALA      -0.4157
+H     ALA       0.2719
+CA    ALA       0.0337
+HA    ALA       0.0823
+CB    ALA      -0.1825
+...
+```
+
+#### radius.siz – Atomic Radii
+
+This file assigns atomic radii used to define the molecular surface and mesh discretization.
+The format is similar to charge.crg:
+
+
+```ini
+! This file was created from amber98.prm
+!    file from TINKER package
+! The format of this file:
+! Column 1-6: atom name; column 7-9: residue name;
+! column 10-12: residue number; column 14: chain name;
+! column 15-23: atom size. For example:
+atom__resnumbc_radius_
+1H              1.250
+2H              1.250
+3H              1.250
+H1              1.250
+H2              1.250
+H3              1.250
+
+OXT             1.480
+
+N     ALA       1.8240
+H     ALA       0.6000
+CA    ALA       1.9080
+HA    ALA       1.3870
+CB    ALA       1.9080
+...
+```
+
+{: .note }
+>If you already have a `.pqr` file (which includes charges and radii), you don’t need `.crg` and `.siz` files. 
+>However, using `.pdb` + `.crg` + `.siz` gives more flexibility and allows you to apply consistent parameter sets to multiple structures.
 
 ### Prepare the Parameter File
 
@@ -91,6 +160,18 @@ apptainer exec --pwd /App --bind .:/App ../NextGenPB.sif mpirun -np 4 ngpb --prm
 At the end of the execution, you will see a log similar to this:
 
 ```ini
+================ [ Electrostatic Energy ] =================
+  Net charge [e]:                                 1.000100072473288
+  Flux charge [e]:                                0.9999852578120542
+  Polarization energy [kT]:                       -370.6199322776101
+  Direct ionic energy [kT]:                       -0.3187630925742346
+  Coulombic energy [kT]:                          -10069.09853443279
+  Sum of electrostatic energy contributions [kT]: -10440.03722980297
+===========================================================
+compute energy
+Elapsed time : 140.616ms
+
+Timing Report:
 ...
 ```
 
