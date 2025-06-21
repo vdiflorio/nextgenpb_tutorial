@@ -92,7 +92,7 @@ apptainer exec --pwd /App --bind .:/App ../NextGenPB.sif mpirun -np 4 ngpb --prm
 
 At the end of the execution, you will see a log similar to this:
 
-```ini
+```bash
 ================ [ Electrostatic Energy ] =================
   Net charge [e]:                                 7.327471962526033e-15
   Flux charge [e]:                                -4.859124220152702e-11

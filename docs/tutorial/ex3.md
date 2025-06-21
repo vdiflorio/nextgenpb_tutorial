@@ -98,7 +98,7 @@ apptainer exec --pwd /App --bind .:/App ../NextGenPB.sif mpirun -np 4 ngpb --prm
 
 At the end of the execution, you will see a log similar to this:
 
-```ini
+```bash
 ================ [ Electrostatic Energy ] =================
   Net charge [e]:                                 1.000100072473288
   Flux charge [e]:                                0.9999852578120542
@@ -149,11 +149,12 @@ To visualize your electrostatic potential with them, you need to convert the dat
 {: .important }
 >To run this script you need the python module `vtk`.
 >
+>Install it with:
 >```bash
 >pip install vtk
 >```
 >
->or
+>or, if you’re using Anaconda:
 >
 >```bash
 >conda install vtk

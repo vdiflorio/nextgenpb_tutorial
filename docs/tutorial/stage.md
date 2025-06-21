@@ -62,4 +62,5 @@ This repository contains the source code (for those interested in development) a
 ---
 
 Now you’re ready to start testing the core features of **NextGenPB** with practical exercises.
+
 ➡️ Go to the next [exercise](/nextgenpb_tutorial/docs/tutorial/ex1).
