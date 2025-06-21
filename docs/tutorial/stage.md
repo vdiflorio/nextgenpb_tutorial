@@ -48,7 +48,7 @@ mkdir ex4
 ### Download the container
 
 ```bash
-wget ...
+wget https://github.com/concept-lab/NextGenPB/releases/download/NextGenPB_v1.0.0/NextGenPB.sif
 ```
 
 ### Clone the NextGenPB repository
