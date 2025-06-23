@@ -61,6 +61,30 @@ calc_coulombic = 1
 [../]
 ```
 
+{: .note-title }
+> **How to create the `options.prm` file**  
+>
+> You can create the file using any text editor (e.g., `nano`, `vim`, `gedit`, or a code editor like VSCode).  
+>
+> Example using the terminal:
+>
+> ```bash
+> nano options.prm
+> ```
+>
+> Then paste the content into the editor, save (`Ctrl+O`), and exit (`Ctrl+X`).  
+>
+> Alternatively, you can create it with a redirect:
+>
+> ```bash
+> cat > options.prm << EOF
+> [input]
+> filename = 1CCM.pqr
+> [../]
+> EOF
+> ```
+> Replace the block with the actual content you need.
+
 #### What are `perfil1` and `perfil2`?
 
 The perfil parameters control how the mesh adapts to the geometry of the molecule:
@@ -74,7 +98,7 @@ This means:
 
 The mesh gradually transitions from the fine region (perfil1) to the coarse one (perfil2), allowing accurate resolution where needed while keeping the overall number of elements manageable.
 
-![Figura 1: Visualizzazione della mesh](/nextgenpb_tutorial/docs/images/image_tutorial.png)
+![Figure 1: Mesh visualization](/nextgenpb_tutorial/docs/images/image_tutorial.png)
 
 
 ---

@@ -189,6 +189,8 @@ Now open your molecular visualization software:
 
 These programs will display the electrostatic potential as a volumetric map or as colored surfaces mapped onto the molecule.
 
+![Figure 2: VMD visualization](/nextgenpb_tutorial/docs/images/vmdscene.tga)
+
 
 ### With ParaView
 
