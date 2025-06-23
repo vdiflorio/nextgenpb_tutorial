@@ -72,7 +72,7 @@ calc_coulombic = 1
 > nano options.prm
 > ```
 >
-> Then paste the content into the editor, save (`Ctrl+O`), and exit (`Ctrl+X`).  
+> Then paste the content into the editor, save (`Ctrl+o`), and exit (`Ctrl+x`).  
 >
 > Alternatively, you can create it with a redirect:
 >
