@@ -75,6 +75,7 @@ This will produce a mesh with a grid scale in the region of perfil1 equal to 0.2
 #### Random center (`rand_center.prm`)
 
 Create a file named `rand_center.prm` in the current directory with the following content:
+
 ```ini
 [input]
 filetype = pdb
@@ -108,6 +109,48 @@ potential_map = 1     # 1 = write full potential map to file
 ```
 
 This will randomly shift the mesh center within an interval of one grid scale.
+
+#### Focusing (`focus.prm`)
+
+Create a file named `focus.prm` in the current directory with the following content:
+
+```ini
+[input]
+filetype = pdb
+filename = 1CCM.pdb
+radius_file = radius.siz
+charge_file = charge.crg
+write_pqr = 1
+name_pqr = 1CCM_out.pqr
+[../]
+
+[mesh]
+mesh_shape = 3
+perfil1 = 0.9
+perfil2 = 0.2
+scale   = 2.0
+
+cx_foc  = 1       # X-center of focusing region
+cy_foc  = 10       # Y-center of focusing region
+cz_foc  = 5       # Z-center of focusing region
+n_grid  = 50      # Number of 1/scale-width intervals in focused zone
+[../]
+
+[model]
+bc_type = 1                                
+molecular_dielectric_constant = 2      # Dielectric constant inside the molecule
+solvent_dielectric_constant   = 80     # Dielectric constant of the solvent (e.g., water)
+ionic_strength                = 0.145  # Ionic strength (mol/L)
+T                             = 298.15 # Temperature in Kelvin
+calc_energy    = 2
+calc_coulombic = 1
+
+map_type      = vtu   # Output format: 'vtu' (for ParaView, vtk binary), 'oct' (Octbin internal format)
+potential_map = 1     # 1 = write full potential map to file
+[../]
+```
+
+![Figure 3: Mesh focusing](/nextgenpb_tutorial/docs/images/focusing.png)
 
 ---
 
