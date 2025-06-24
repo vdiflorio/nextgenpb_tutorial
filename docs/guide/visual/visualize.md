@@ -25,6 +25,9 @@ These files contain the results of the electrostatic calculations and are useful
 - **`phi_nodes.txt` file:**  
   Contains coordinates of boundary nodes (the edges of your computational domain) along with their potential values.
 
+- **`phi_on_atoms.txt` file:**  
+  Contains the coordinates of atom centers and the electrostatic potential values computed at those positions.
+
 ---
 
 ## Visualizing in ParaView (Recommended for VTK files)
