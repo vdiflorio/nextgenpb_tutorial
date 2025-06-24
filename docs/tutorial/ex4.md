@@ -158,16 +158,23 @@ potential_map = 1     # 1 = write full potential map to file
 
 Now launch the simulation using Apptainer:
 
+**Refined grid**
+
 ```bash
 apptainer exec --pwd /App --bind .:/App ../NextGenPB.sif mpirun -np 4 ngpb --prmfile fine_mesh.prm
 ```
 
-and
+**Random center**
 
 ```bash
 apptainer exec --pwd /App --bind .:/App ../NextGenPB.sif mpirun -np 4 ngpb --prmfile rand_center.prm
 ```
 
+**Focusing**
+
+```bash
+apptainer exec --pwd /App --bind .:/App ../NextGenPB.sif mpirun -np 4 ngpb --prmfile focusing.prm
+```
 ---
 
 
