@@ -17,7 +17,7 @@ The main configuration file `options.prm` defines:
 
 - Prefer `.pqr` files when possible — simpler and self-contained.
 - Ensure relative paths in `options.prm` are correct with respect to where you run the program.
-- An example of parameter file with all options described is [here](https://github.com/vdiflorio/NextGenPB/tree/main/data).
+- An example of parameter file with all options described is [here](https://github.com/concept-lab/NextGenPB/blob/main/data/options.prm).
 
 ---
 

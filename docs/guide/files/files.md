@@ -21,7 +21,8 @@ Files with the `.pqr` extension are the preferred input format. They **combine**
 
 This makes them ideal for simulations, as all necessary physical properties are included in a single file.
 
-**Example:** You can find example `.pqr` files in this [GitHub repository](https://github.com/vdiflorio/NextGenPB/tree/main/data).
+**Example:** You can find example `.pqr` files in this [GitHub repository](https://github.com/concept-lab/NextGenPB/tree/main/data).
+
 
 {: .note }
 You can easily convert `.pdb` files into `.pqr` using tools like [`PDB2PQR`](https://server.poissonboltzmann.org/pdb2pqr).
@@ -49,7 +50,7 @@ To use `.pdb` files in your simulation, you must also supply:
 
 These files provide the missing physical properties needed for electrostatic simulation.
 
-**Example:** Example `.pdb`, `.siz`, and `.crg` files can be found [here](https://github.com/vdiflorio/NextGenPB/tree/main/data).
+**Example:** Example `.pdb`, `.siz`, and `.crg` files can be found [here](https://github.com/concept-lab/NextGenPB/tree/main/data).
 
 {: .note }
 Using `.pdb` files gives you **more flexibility**. You can define **custom radii and charges** in your `.siz` and `.crg` files, which is especially useful if your molecule contains **non-standard residues or atoms**. You can even assign specific values to selected residues or atoms.

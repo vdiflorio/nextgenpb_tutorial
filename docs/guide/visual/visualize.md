@@ -59,7 +59,21 @@ To visualize your electrostatic potential with them, you need to convert the dat
 
 ### Step 1: Use the `vtu2cube.py` script
 
-NextGenPB provides a [Python script](https://github.com/vdiflorio/NextGenPB/tree/main/scripts) in the scripts/ directory, that converts the `.vtu` files into a `.cube` file.
+NextGenPB provides a [Python script](https://github.com/concept-lab/NextGenPB/tree/main/scripts) in the scripts/ directory, that converts the `.vtu` files into a `.cube` file.
+
+{: .important }
+>To run this script you need the python module `vtk`.
+>
+>Install it with:
+>```bash
+>pip install vtk
+>```
+>
+>or, if you’re using Anaconda:
+>
+>```bash
+>conda install vtk
+>```
 
 Run this command in your terminal:
 
