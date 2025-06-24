@@ -127,7 +127,7 @@ After the execution finishes, the solver will generate a set of output files:
 - `total_potential_map.pvtu` – merged potential map for visualization in ParaView
 - `phi_surf.txt` – potential values on the molecular surface
 - `phi_nodes.txt` – potential values at the molecuar surface boundary nodes
-- `phi_on_atoms_*.txt` – potential values at atomic positions (per rank)
+- `phi_on_atoms.txt` – potential values at atomic positions
 
 The * in the filenames corresponds to the MPI rank number.
 
