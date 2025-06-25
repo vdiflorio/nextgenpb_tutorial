@@ -21,6 +21,9 @@ This service allows users to upload PDB files and generate molecular surfaces in
 
 ## Bimpp
 
-[Bimpp](https://github.com/carlodefalco/bimpp/tree/master) is the core C++ library used by NextGenPB. It provides fundamental tools for electrostatics and molecular modeling, with a focus on modularity and reusability. By building on bimpp, NextGenPB ensures flexibility, interoperability, and ease of maintenance.
+[Bimpp](https://github.com/carlodefalco/bimpp/tree/master) is the core C++ library used by NextGenPB.
+
+It provides fundamental tools for linear algebra and for discretizing
+partial differential operators appearing in electrostatics and molecular modeling. Bimpp is built with a focus on modularity and reusability. By building on bimpp, NextGenPB ensures flexibility, interoperability, and ease of maintenance.
 
 ---
