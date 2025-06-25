@@ -87,7 +87,7 @@ calc_coulombic = 1
 
 #### What are `perfil1` and `perfil2`?
 
-The perfil parameters control how the mesh adapts to the geometry of the molecule:
+The perfil parameters control how the mesh adapts to the geometry of the molecule by defining how densely the mesh is refined in different regions of the domain. Specifically, they represent filling percentages:
 
 - `perfil1` is the ratio between the molecular system size and the edge length of the finest resolution region (core mesh).
 - `perfil2` is the same ratio, but for the outer region where the mesh is coarser.
