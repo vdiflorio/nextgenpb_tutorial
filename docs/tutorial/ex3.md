@@ -163,7 +163,7 @@ To visualize your electrostatic potential with them, you need to convert the dat
 Run the following command in your terminal:
 
 ```bash
-python ../NextGenPB/scritps/vtu2cube.py 1CCM_out.pqr --scale 2
+python ../NextGenPB/scripts/vtu2cube.py 1CCM_out.pqr --scale 2
 ```
 
 This will generate a CUBE file `1CCM_out.cube`.
