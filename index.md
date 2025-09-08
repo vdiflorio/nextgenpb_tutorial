@@ -35,4 +35,15 @@ Whether you're a student just getting started or a researcher interested in bioe
 
 ---
 
+## Citation
+
+If you use **NextGenPB** in your research, please cite the following work:
+
+Vincenzo Di Florio, Patrizio Ansalone, Sergii V. Siryk, Sergio Decherchi, Carlo de Falco, Walter Rocchia,  
+*NextGenPB: An analytically-enabled super resolution tool for solving the Poisson-Boltzmann equation featuring local (de)refinement*,  
+Computer Physics Communications, Volume 317, 2025, 109816,  
+ISSN 0010-4655, [https://doi.org/10.1016/j.cpc.2025.109816](https://doi.org/10.1016/j.cpc.2025.109816)
+
+---
+
 [Just the Docs repo]: https://github.com/concept-lab/NextGenPB
